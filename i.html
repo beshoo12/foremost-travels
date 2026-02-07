@@ -1,0 +1,887 @@
+<section id="booking" class="py-5" style="background-color: #f8f9fa;">
+    <div class="container">
+        <div class="booking-wrapper shadow-lg rounded-4 overflow-hidden bg-white animate__animated animate__fadeInUp">
+            
+            <div class="booking-header text-center py-5 text-white" style="background: linear-gradient(135deg, #0F2854 0%, #1a3a6e 100%);">
+                <h2 class="noto-serif-unique mb-2 fw-bold">مركز الحجز العالمي - FOREMOST</h2>
+                <p class="opacity-75 lead mb-0">نظام حجز ذكي (API) - طيران، فنادق، والمزيد</p>
+            </div>
+
+            <div class="booking-tabs-container bg-white border-bottom p-3">
+                <ul class="nav nav-pills nav-fill gap-2" id="pills-tab" role="tablist">
+                    <li class="nav-item"><button class="nav-link active fw-bold py-3" data-bs-toggle="pill" data-bs-target="#flight-tab" onclick="setService('طيران')"><i class="fas fa-plane-departure me-2"></i> طيران</button></li>
+                    <li class="nav-item"><button class="nav-link fw-bold py-3" data-bs-toggle="pill" data-bs-target="#hotel-tab" onclick="setService('فنادق')"><i class="fas fa-hotel me-2"></i> فنادق</button></li>
+                    <li class="nav-item"><button class="nav-link fw-bold py-3" data-bs-toggle="pill" data-bs-target="#train-tab" onclick="setService('قطارات')"><i class="fas fa-train me-2"></i> قطارات</button></li>
+                    <li class="nav-item"><button class="nav-link fw-bold py-3" data-bs-toggle="pill" data-bs-target="#car-tab" onclick="setService('سيارات')"><i class="fas fa-car me-2"></i> سيارات</button></li>
+                    <li class="nav-item"><button class="nav-link fw-bold py-3 text-gold" data-bs-toggle="pill" data-bs-target="#package-tab" onclick="setService('باقة شاملة')"><i class="fas fa-gem me-2"></i> بكج VIP</button></li>
+                </ul>
+            </div>
+
+            <form id="megaBookingForm" class="p-4 p-lg-5 text-right">
+                
+                <div class="row g-4 mb-5 border-bottom pb-4">
+                    <h5 class="text-primary fw-bold mb-3"><i class="fas fa-id-card me-2"></i> بيانات المسافر الأساسية</h5>
+                    
+                    <div class="col-md-4">
+                        <label class="form-label small fw-bold">الاسم بالكامل (كما في الجواز)</label>
+                        <input type="text" class="form-control form-control-lg" id="fName" required placeholder="Full Name">
+                    </div>
+                    <div class="col-md-4">
+                        <label class="form-label small fw-bold">البريد الإلكتروني</label>
+                        <input type="email" class="form-control form-control-lg" id="uEmail" required placeholder="name@example.com">
+                    </div>
+                    <div class="col-md-4">
+                        <label class="form-label small fw-bold">رقم الواتساب</label>
+                        <div class="phone-input-wrapper" style="direction: ltr;">
+                            <input type="tel" class="form-control form-control-lg custom-phone-input" id="uPhone" required style="width: 100%;">
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <label class="form-label small fw-bold">رقم جواز السفر (اختياري)</label>
+                        <input type="text" class="form-control" id="uPassport" placeholder="Passport Number">
+                    </div>
+                    <div class="col-md-6">
+                        <label class="form-label small fw-bold">الجنسية</label>
+                        <input type="text" class="form-control" id="uNationality" placeholder="الجنسية">
+                    </div>
+                </div>
+
+                <div class="tab-content" id="pills-tabContent">
+                    
+                    <div class="tab-pane fade show active" id="flight-tab">
+                        <div class="row g-3">
+                            <div class="col-12 mb-3">
+                                <div class="d-flex gap-4 p-3 bg-light rounded-3">
+                                    <div class="form-check"><input class="form-check-input" type="radio" name="flightType" id="roundTrip" value="ذهاب وعودة" checked><label class="form-check-label fw-bold" for="roundTrip">ذهاب وعودة</label></div>
+                                    <div class="form-check"><input class="form-check-input" type="radio" name="flightType" id="oneWay" value="ذهاب فقط"><label class="form-check-label fw-bold" for="oneWay">ذهاب فقط</label></div>
+                                    <div class="form-check"><input class="form-check-input" type="radio" name="flightType" id="multiCity" value="وجهات متعددة"><label class="form-check-label fw-bold" for="multiCity">وجهات متعددة</label></div>
+                                </div>
+                            </div>
+
+                            <div id="flight-routes-container" class="col-12">
+                                <div class="row g-3 flight-route-row">
+                                    <div class="col-md-6 position-relative">
+                                        <label class="form-label small text-muted">من (المطار/المدينة)</label>
+                                        <input type="text" class="form-control city-search" id="fFrom" placeholder="اكتب اسم المدينة (مثال: Cairo)..." autocomplete="off">
+                                        <ul class="autocomplete-list" id="results-fFrom"></ul> 
+                                    </div>
+                                    <div class="col-md-6 position-relative">
+                                        <label class="form-label small text-muted">إلى (المطار/المدينة)</label>
+                                        <input type="text" class="form-control city-search" id="fTo" placeholder="اكتب اسم المدينة (مثال: London)..." autocomplete="off">
+                                        <ul class="autocomplete-list" id="results-fTo"></ul> 
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label class="form-label small text-muted">تاريخ الذهاب</label>
+                                        <input type="text" class="form-control date-picker" id="fDepart" placeholder="اختر التاريخ">
+                                    </div>
+                                    <div class="col-md-6" id="returnField">
+                                        <label class="form-label small text-muted">تاريخ العودة</label>
+                                        <input type="text" class="form-control date-picker" id="fReturn" placeholder="اختر التاريخ">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <hr class="my-4 text-muted">
+                            <div class="col-12">
+                                <h6 class="fw-bold mb-3">تفاصيل الرحلة</h6>
+                                <div class="row g-3 p-3 bg-light rounded-3 border">
+                                    <div class="col-md-3"><label class="small text-muted">البالغين (+12)</label><select class="form-select" id="fAdults"><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option></select></div>
+                                    <div class="col-md-3"><label class="small text-muted">الأطفال (2-11)</label><select class="form-select" id="fKids"><option value="0">0</option><option value="1">1</option><option value="2">2</option></select></div>
+                                    <div class="col-md-3"><label class="small text-muted">الرضع (0-2)</label><select class="form-select" id="fInfants"><option value="0">0</option><option value="1">1</option></select></div>
+                                    <div class="col-md-3"><label class="small text-muted">الدرجة</label><select class="form-select fw-bold text-primary" id="fClass"><option value="Economy">سياحية (Economy)</option><option value="Business">رجال أعمال (Business)</option><option value="First">أولى (First)</option></select></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="tab-pane fade" id="hotel-tab">
+                        <div class="row g-3">
+                            <div class="col-md-12 position-relative">
+                                <label class="form-label fw-bold">الوجهة (المدينة)</label>
+                                <input type="text" class="form-control form-control-lg city-search" id="hCity" placeholder="اكتب اسم المدينة..." autocomplete="off">
+                                <ul class="autocomplete-list" id="results-hCity"></ul>
+                            </div>
+                            <div class="col-md-6"><label class="form-label small text-muted">دخول</label><input type="text" class="form-control date-picker" id="hCheckIn"></div>
+                            <div class="col-md-6"><label class="form-label small text-muted">خروج</label><input type="text" class="form-control date-picker" id="hCheckOut"></div>
+                            <div class="col-md-4"><label class="small fw-bold">الغرف</label><select class="form-select" id="hRooms"><option value="1">1</option><option value="2">2</option></select></div>
+                            <div class="col-md-4"><label class="small fw-bold">النجوم</label><select class="form-select" id="hStars"><option value="4 نجوم">4 نجوم</option><option value="5 نجوم">5 نجوم</option></select></div>
+                            <div class="col-md-4"><label class="small fw-bold">طلبات</label><input type="text" class="form-control" id="hRequests"></div>
+                        </div>
+                    </div>
+
+                    <div class="tab-pane fade" id="train-tab">
+                         <div class="row g-3">
+                            <div class="col-md-6 position-relative"><label>من</label><input type="text" class="form-control city-search" id="trOrigin"><ul class="autocomplete-list" id="results-trOrigin"></ul></div>
+                            <div class="col-md-6 position-relative"><label>إلى</label><input type="text" class="form-control city-search" id="trDest"><ul class="autocomplete-list" id="results-trDest"></ul></div>
+                            <div class="col-md-12"><label>التاريخ</label><input type="text" class="form-control date-picker" id="trDate"></div>
+                         </div>
+                    </div>
+
+                    <div class="tab-pane fade" id="car-tab">
+                        <div class="row g-3">
+                            <div class="col-md-12 position-relative"><label>موقع الاستلام</label><input type="text" class="form-control city-search" id="carPickLoc"><ul class="autocomplete-list" id="results-carPickLoc"></ul></div>
+                            <div class="col-md-6"><label>تاريخ الاستلام</label><input type="text" class="form-control date-picker" id="carPickDate"></div>
+                            <div class="col-md-6"><label>تاريخ التسليم</label><input type="text" class="form-control date-picker" id="carDropDate"></div>
+                            <div class="col-md-6"><label>نوع السيارة</label><select class="form-select" id="carType"><option>سيدان</option><option>SUV</option></select></div>
+                            <div class="col-md-6"><label>سائق</label><select class="form-select" id="carDriver"><option>بدون سائق</option><option>مع سائق</option></select></div>
+                        </div>
+                    </div>
+
+                    <div class="tab-pane fade" id="package-tab">
+                        <div class="row g-3">
+                            <div class="col-md-12"><label>الوجهة المفضلة</label><input type="text" class="form-control" id="pkgDest"></div>
+                            <div class="col-md-6"><label>موعد السفر</label><input type="text" class="form-control date-picker" id="pkgDate"></div>
+                            <div class="col-md-6"><label>الميزانية</label><select class="form-select" id="pkgBudget"><option>اقتصادية</option><option>VIP</option></select></div>
+                            <div class="col-12 mt-3"><label>الخدمات المطلوبة</label><br>
+                                <input type="checkbox" id="incFlight" checked> طيران &nbsp;
+                                <input type="checkbox" id="incHotel" checked> فنادق &nbsp;
+                                <input type="checkbox" id="incCar"> سيارة
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="row mt-5 pt-4 border-top">
+                    <div class="col-md-7 mb-3"><div class="form-floating"><textarea class="form-control" id="uNotes" style="height: 80px" placeholder="ملاحظات"></textarea><label>ملاحظات إضافية</label></div></div>
+                    <div class="col-md-5 d-flex align-items-center">
+                        <button type="submit" class="btn btn-success w-100 py-3 fw-bold shadow-lg btn-send-request">
+                            <i class="fab fa-whatsapp fa-lg me-2"></i> تأكيد وإرسال الطلب
+                        </button>
+                    </div>
+                </div>
+
+            </form>
+        </div>
+    </div>
+</section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<section id="booking" class="py-5" style="background-color: #f8f9fa;">
+    <div class="container">
+        <div class="booking-wrapper shadow-lg rounded-4 overflow-hidden bg-white animate__animated animate__fadeInUp">
+            
+            <div class="booking-header text-center py-5 text-white" style="background: linear-gradient(135deg, #0F2854 0%, #1a3a6e 100%);">
+                <h2 class="noto-serif-unique mb-2 fw-bold">مركز الحجز العالمي - FOREMOST</h2>
+                <p class="opacity-75 lead mb-0">صمم رحلتك بدقة.. ونحن نتكفل بالباقي</p>
+            </div>
+
+            <div class="booking-tabs-container bg-white border-bottom p-3">
+                <ul class="nav nav-pills nav-fill gap-2" id="pills-tab" role="tablist">
+                    <li class="nav-item">
+                        <button class="nav-link active fw-bold py-3" data-bs-toggle="pill" data-bs-target="#flight-tab" onclick="setService('طيران')">
+                            <i class="fas fa-plane-departure me-2"></i> طيران
+                        </button>
+                    </li>
+                    <li class="nav-item">
+                        <button class="nav-link fw-bold py-3" data-bs-toggle="pill" data-bs-target="#hotel-tab" onclick="setService('فنادق')">
+                            <i class="fas fa-hotel me-2"></i> فنادق
+                        </button>
+                    </li>
+                    <li class="nav-item">
+                        <button class="nav-link fw-bold py-3" data-bs-toggle="pill" data-bs-target="#train-tab" onclick="setService('قطارات')">
+                            <i class="fas fa-train me-2"></i> قطارات أوروبا
+                        </button>
+                    </li>
+                    <li class="nav-item">
+                        <button class="nav-link fw-bold py-3" data-bs-toggle="pill" data-bs-target="#car-tab" onclick="setService('سيارات')">
+                            <i class="fas fa-car me-2"></i> سيارات
+                        </button>
+                    </li>
+                    <li class="nav-item">
+                        <button class="nav-link fw-bold py-3 text-gold" data-bs-toggle="pill" data-bs-target="#package-tab" onclick="setService('باقة شاملة')">
+                            <i class="fas fa-gem me-2"></i> بكج VIP شامل
+                        </button>
+                    </li>
+                </ul>
+            </div>
+
+            <form id="megaBookingForm" class="p-4 p-lg-5 text-right">
+                
+                <div class="row g-4 mb-5 border-bottom pb-4">
+                    <h5 class="text-primary fw-bold mb-3"><i class="fas fa-user-circle me-2"></i> بيانات التواصل الأساسية</h5>
+                    <div class="col-md-4">
+                        <label class="form-label text-muted small fw-bold">الأسم الأول</label>
+                        <input type="text" class="form-control form-control-lg" id="fName" required placeholder="first-name">
+                    </div>
+                    <div class="col-md-4">
+                        <label class="form-label text-muted small fw-bold">الأسم الثانى</label>
+                        <input type="text" class="form-control form-control-lg" id="mName" required placeholder="second-name">
+                    </div>
+                    <div class="col-md-4">
+                        <label class="form-label text-muted small fw-bold">الأسم الأخير</label>
+                        <input type="text" class="form-control form-control-lg" id="lName" required placeholder="last-name">
+                    </div>
+                    <div class="col-md-4">
+                        <label class="form-label small fw-bold">البريد الإلكتروني</label>        
+                        <input type="email" class="form-control form-control-lg" id="uEmail" required placeholder="user@example.com" style="height: 60px;">
+                    </div>
+                     <div class="col-md-4">
+                        <label class="form-label small fw-bold">رقم جواز السفر</label>
+                        <input type="number" class="form-control" id="uPassport" placeholder="Passport Number" required style="height: 60px;">
+                    </div>
+                     <div class="col-md-4">
+                        <label class="form-label text-muted small fw-bold">رقم الواتساب (لإرسال العرض)</label>
+                        <div class="phone-input-wrapper" style="direction: ltr;">
+                            <input type="tel" class="form-control form-control-lg custom-phone-input" id="uPhone" required style="width: 100%;">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="tab-content" id="pills-tabContent">
+                    
+                    <div class="tab-pane fade show active" id="flight-tab">
+                        <div class="row g-3">
+                            <div class="col-12 mb-3">
+                                <div class="d-flex gap-4 p-3 bg-light rounded-3">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="radio" name="flightType" id="roundTrip" value="ذهاب وعودة" checked>
+                                        <label class="form-check-label fw-bold" for="roundTrip">ذهاب وعودة</label>
+                                    </div>
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="radio" name="flightType" id="oneWay" value="ذهاب فقط">
+                                        <label class="form-check-label fw-bold" for="oneWay">ذهاب فقط</label>
+                                    </div>
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="radio" name="flightType" id="multiCity" value="وجهات متعددة">
+                                        <label class="form-check-label fw-bold" for="multiCity">وجهات متعددة (Multi-City)</label>
+                                    </div>
+                                </div>
+                            </div>
+<div id="flight-routes-container" class="col-12">
+    <div class="row g-3 flight-route-row">
+        
+        <div class="col-md-4 position-relative">
+            <label class="form-label small text-muted">من (المطار/المدينة)</label>
+            <div class="input-group">
+                <span class="input-group-text"><i class="fas fa-plane-departure"></i></span>
+                <input type="text" class="form-control" id="fFrom" placeholder="المغادرة" autocomplete="off">
+            </div>
+            <ul class="autocomplete-list" id="results-fFrom"></ul>
+        </div>
+
+        <div class="col-md-4 position-relative">
+            <label class="form-label small text-muted">إلى (المطار/المدينة)</label>
+            <div class="input-group">
+                <span class="input-group-text"><i class="fas fa-plane-arrival"></i></span>
+                <input type="text" class="form-control" id="fTo" placeholder="الوصول" autocomplete="off">
+            </div>
+            <ul class="autocomplete-list" id="results-fTo"></ul>
+        </div>
+
+        <div class="col-md-4">
+            <label class="form-label small text-muted">تاريخ السفر</label>
+            <input type="text" class="form-control date-picker" id="fDate" placeholder="اختر التاريخ">
+        </div>
+
+    </div>
+</div>
+
+                            <div class="col-12 mt-2" id="addRouteBtnContainer" style="display: none;">
+                                <button type="button" class="btn btn-outline-primary btn-sm" onclick="addFlightRow()">
+                                    <i class="fas fa-plus"></i> إضافة وجهة أخرى
+                                </button>
+                            </div>
+
+                            <div class="col-md-12 mt-3" id="returnDateContainer">
+                                <label class="form-label small text-muted">تاريخ العودة</label>
+                                <input type="date" class="form-control" id="fReturnDate">
+                            </div>
+
+                            <hr class="my-4 text-muted">
+
+                            <div class="col-12">
+                                <h6 class="fw-bold mb-3">تفاصيل المسافرين (الحد الأقصى 9)</h6>
+                                <div class="row g-3 p-3 bg-light rounded-3 border">
+                                    <div class="col-md-3">
+                                        <label class="small text-muted">البالغين (+12)</label>
+                                        <select class="form-select" id="fAdults">
+                                            <option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option><option value="6">6</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <label class="small text-muted">الأطفال (2-11)</label>
+                                        <select class="form-select" id="fKids">
+                                            <option value="0">0</option><option value="1">1</option><option value="2">2</option><option value="3">3</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <label class="small text-muted">الرضع (0-2)</label>
+                                        <select class="form-select" id="fInfants">
+                                            <option value="0">0</option><option value="1">1</option><option value="2">2</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <label class="small text-muted">درجة المقصورة</label>
+                                        <select class="form-select fw-bold text-primary" id="fClass">
+                                            <option value="Economy">Economy (سياحية)</option>
+                                            <option value="Premium Economy">Premium Economy</option>
+                                            <option value="Business">Business (رجال أعمال)</option>
+                                            <option value="First Class">First Class (أولى)</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="tab-pane fade" id="hotel-tab">
+                        <div class="row g-3">
+                            <div class="col-md-12">
+                                <label class="form-label fw-bold">الوجهة (المدينة أو اسم الفندق)</label>
+                                <div class="input-group">
+                                    <span class="input-group-text bg-white"><i class="fas fa-map-marker-alt text-danger"></i></span>
+                                    <input type="text" class="form-control form-control-lg" id="hCity" placeholder="مثال: لندن، فندق هيلتون...">
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <label class="form-label small text-muted">تاريخ الدخول (Check-in)</label>
+                                <input type="date" class="form-control" id="hCheckIn">
+                            </div>
+                            <div class="col-md-6">
+                                <label class="form-label small text-muted">تاريخ الخروج (Check-out)</label>
+                                <input type="date" class="form-control" id="hCheckOut">
+                            </div>
+                            
+                            <div class="col-12 mt-4">
+                                <div class="p-3 border rounded bg-light">
+                                    <div class="row g-3">
+                                        <div class="col-md-4">
+                                            <label class="small fw-bold">الغرف</label>
+                                            <select class="form-select" id="hRooms">
+                                                <option value="1">غرفة واحدة</option>
+                                                <option value="2">غرفتين</option>
+                                                <option value="3+">3 غرف أو أكثر</option>
+                                            </select>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <label class="small fw-bold">النجوم (التقييم)</label>
+                                            <select class="form-select" id="hStars">
+                                                <option value="4 نجوم">⭐⭐⭐⭐ (اقتصادي)</option>
+                                                <option value="5 نجوم">⭐⭐⭐⭐⭐ (فاخر)</option>
+                                                <option value="7 نجوم">⭐⭐⭐⭐⭐⭐⭐ (VIP)</option>
+                                            </select>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <label class="small fw-bold">طلبات خاصة</label>
+                                            <input type="text" class="form-control" id="hRequests" placeholder="مثال: غرف متصلة، إطلالة بحر">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="tab-pane fade" id="train-tab">
+                        <div class="row g-3">
+                            <div class="col-12 mb-3">
+                                <div class="alert alert-info small"><i class="fas fa-info-circle"></i> نوفر تذاكر Eurail و قطارات الحرمين والقطارات الدولية.</div>
+                            </div>
+                            <div class="col-md-6">
+                                <label class="form-label small fw-bold">محطة الانطلاق</label>
+                                <input type="text" class="form-control" id="trOrigin" placeholder="مثال: Paris Gare du Nord">
+                            </div>
+                            <div class="col-md-6">
+                                <label class="form-label small fw-bold">محطة الوصول</label>
+                                <input type="text" class="form-control" id="trDest" placeholder="مثال: London St Pancras">
+                            </div>
+                            <div class="col-md-6">
+                                <label class="form-label small text-muted">تاريخ الرحلة</label>
+                                <input type="date" class="form-control" id="trDate">
+                            </div>
+                            <div class="col-md-6">
+                                <label class="form-label small text-muted">الوقت المفضل</label>
+                                <select class="form-select" id="trTime">
+                                    <option value="صباحاً">صباحاً (06:00 - 12:00)</option>
+                                    <option value="ظهراً">ظهراً (12:00 - 17:00)</option>
+                                    <option value="مساءً">مساءً (17:00 - 23:00)</option>
+                                </select>
+                            </div>
+                            <div class="col-md-12">
+                                <label class="form-label small fw-bold">عدد المسافرين والدرجة</label>
+                                <div class="input-group">
+                                    <input type="number" class="form-control" id="trPax" placeholder="العدد" min="1" max="20">
+                                    <select class="form-select" id="trClass">
+                                        <option value="Standard">Standard (درجة ثانية)</option>
+                                        <option value="First Class">First Class (درجة أولى)</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="tab-pane fade" id="car-tab">
+                        <div class="row g-3">
+                            <div class="col-md-6">
+                                <label class="form-label small fw-bold">موقع الاستلام</label>
+                                <input type="text" class="form-control" id="carPickLoc" placeholder="مطار أو مدينة">
+                            </div>
+                            <div class="col-md-6">
+                                <label class="form-label small fw-bold">موقع التسليم</label>
+                                <input type="text" class="form-control" id="carDropLoc" placeholder="نفس الموقع أو مدينة أخرى">
+                            </div>
+                            <div class="col-md-3">
+                                <label class="form-label small text-muted">تاريخ الاستلام</label>
+                                <input type="date" class="form-control" id="carPickDate">
+                            </div>
+                            <div class="col-md-3">
+                                <label class="form-label small text-muted">وقت الاستلام</label>
+                                <input type="time" class="form-control" id="carPickTime">
+                            </div>
+                            <div class="col-md-3">
+                                <label class="form-label small text-muted">تاريخ التسليم</label>
+                                <input type="date" class="form-control" id="carDropDate">
+                            </div>
+                            <div class="col-md-3">
+                                <label class="form-label small text-muted">وقت التسليم</label>
+                                <input type="time" class="form-control" id="carDropTime">
+                            </div>
+                            
+                            <div class="col-12 mt-3">
+                                <div class="p-3 bg-light border rounded">
+                                    <div class="row g-3">
+                                        <div class="col-md-6">
+                                            <label class="small fw-bold">فئة السيارة</label>
+                                            <select class="form-select" id="carCategory">
+                                                <option value="Economy">Economy (صغيرة موفرة)</option>
+                                                <option value="SUV">SUV (عائلية / جيب)</option>
+                                                <option value="Luxury">Luxury (فارهة)</option>
+                                                <option value="Van">Van (فان 7 راكب)</option>
+                                            </select>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label class="small fw-bold">عمر السائق</label>
+                                            <select class="form-select" id="carDriverAge">
+                                                <option value="25+">25 سنة أو أكثر (قياسي)</option>
+                                                <option value="21-24">21 - 24 سنة (سائق شاب)</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="tab-pane fade" id="package-tab">
+                        <div class="text-center mb-4">
+                            <h5 class="text-gold fw-bold">صمم باقتك الخاصة <i class="fas fa-magic"></i></h5>
+                            <p class="text-muted small">اختر كل الخدمات التي تحتاجها وسنقوم بدمجها في عرض سعر واحد موفر.</p>
+                        </div>
+                        <div class="row g-3">
+                            <div class="col-md-12">
+                                <label class="form-label fw-bold">الوجهة الرئيسية</label>
+                                <input type="text" class="form-control" id="pkgDest" placeholder="مثال: لندن وباريس، أو تايلاند...">
+                            </div>
+                            <div class="col-md-6">
+                                <label class="form-label small text-muted">تاريخ السفر التقريبي</label>
+                                <input type="date" class="form-control" id="pkgDate">
+                            </div>
+                            <div class="col-md-6">
+                                <label class="form-label small text-muted">المدة (عدد الليالي)</label>
+                                <input type="number" class="form-control" id="pkgDuration" placeholder="مثال: 10 ليالي">
+                            </div>
+                            
+                            <div class="col-12 mt-3">
+                                <label class="form-label fw-bold mb-2">ماذا تريد أن تشمل الباقة؟</label>
+                                <div class="d-flex flex-wrap gap-3">
+                                    <div class="form-check form-check-inline p-2 border rounded bg-white">
+                                        <input class="form-check-input ms-2" type="checkbox" id="incFlight" checked>
+                                        <label class="form-check-label" for="incFlight">تذاكر طيران</label>
+                                    </div>
+                                    <div class="form-check form-check-inline p-2 border rounded bg-white">
+                                        <input class="form-check-input ms-2" type="checkbox" id="incHotel" checked>
+                                        <label class="form-check-label" for="incHotel">فنادق</label>
+                                    </div>
+                                    <div class="form-check form-check-inline p-2 border rounded bg-white">
+                                        <input class="form-check-input ms-2" type="checkbox" id="incCar">
+                                        <label class="form-check-label" for="incCar">سيارة خاصة</label>
+                                    </div>
+                                    <div class="form-check form-check-inline p-2 border rounded bg-white">
+                                        <input class="form-check-input ms-2" type="checkbox" id="incTrain">
+                                        <label class="form-check-label" for="incTrain">قطارات</label>
+                                    </div>
+                                    <div class="form-check form-check-inline p-2 border rounded bg-white">
+                                        <input class="form-check-input ms-2" type="checkbox" id="incVisa">
+                                        <label class="form-check-label" for="incVisa">تأشيرة (Visa)</label>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="col-12 mt-3">
+                                <label class="form-label small fw-bold">ميزانيتك التقديرية (للشخص)</label>
+                                <select class="form-select" id="pkgBudget">
+                                    <option value="اقتصادية">اقتصادية (توفير)</option>
+                                    <option value="متوسطة">متوسطة (4 نجوم)</option>
+                                    <option value="VIP">VIP (فخامة مطلقة)</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="row mt-5 pt-4 border-top">
+                    <div class="col-md-7 mb-3 mb-md-0">
+                        <div class="form-floating">
+                            <textarea class="form-control" id="uNotes" style="height: 80px" placeholder="ملاحظات"></textarea>
+                            <label>هل لديك طلبات خاصة؟ (أو أسماء فنادق مفضلة)</label>
+                        </div>
+                    </div>
+                    <div class="col-md-5 d-flex align-items-center">
+                        <button type="submit" class="btn btn-success w-100 py-3 fw-bold shadow-lg btn-send-request position-relative overflow-hidden">
+                            <span class="position-relative z-2"><i class="fab fa-whatsapp fa-lg me-2"></i> إرسال الطلب للموظف</span>
+                        </button>
+                    </div>
+                    <div class="col-12 text-center mt-2">
+                        <small class="text-muted"><i class="fas fa-lock text-success me-1"></i> بياناتك مشفرة وآمنة تماماً</small>
+                    </div>
+                </div>
+
+            </form>
+        </div>
+    </div>
+</section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<section id="booking" class="py-5" style="background-color: #ffffff;">
+    <div class="container">
+        <div class="booking-wrapper shadow-lg rounded-4 overflow-hidden bg-white animate__animated animate__fadeInUp">
+            
+            <div class="booking-header text-center py-5 text-white" style="background: linear-gradient(135deg, #0F2854 0%, #1a3a6e 100%);">
+                <h2 class="noto-serif-unique mb-2 fw-bold">مركز الحجز العالمي - FOREMOST</h2>
+                <p class="opacity-75 lead mb-0">صمم رحلتك بدقة.. ونحن نتكفل بالباقي</p>
+            </div>
+
+            <div class="booking-tabs-container bg-white border-bottom p-3">
+                <ul class="nav nav-pills nav-fill gap-2" id="pills-tab" role="tablist">
+                    <li class="nav-item"><button class="nav-link active fw-bold py-3" data-bs-toggle="pill" data-bs-target="#flight-tab" onclick="setService('طيران')"><i class="fas fa-plane-departure me-2"></i> طيران</button></li>
+                    <li class="nav-item"><button class="nav-link fw-bold py-3" data-bs-toggle="pill" data-bs-target="#hotel-tab" onclick="setService('فنادق')"><i class="fas fa-hotel me-2"></i> فنادق</button></li>
+                    <li class="nav-item"><button class="nav-link fw-bold py-3" data-bs-toggle="pill" data-bs-target="#train-tab" onclick="setService('قطارات')"><i class="fas fa-train me-2"></i> قطارات</button></li>
+                    <li class="nav-item"><button class="nav-link fw-bold py-3" data-bs-toggle="pill" data-bs-target="#car-tab" onclick="setService('سيارات')"><i class="fas fa-car me-2"></i> سيارات</button></li>
+                    <li class="nav-item"><button class="nav-link fw-bold py-3 text-gold" data-bs-toggle="pill" data-bs-target="#package-tab" onclick="setService('باقة شاملة')"><i class="fas fa-gem me-2"></i> بكج VIP</button></li>
+                </ul>
+            </div>
+
+            <form id="megaBookingForm" class="p-4 p-lg-5 text-right">
+                
+                <div class="tab-content" id="pills-tabContent">
+                    
+                    <div class="tab-pane fade show active" id="flight-tab">
+                        <div class="row g-3">
+                            <div class="col-12 mb-4">
+                                <div class="flight-type-wrapper d-flex justify-content-center gap-3 p-1">
+                                    <div class="flight-option">
+                                        <input class="btn-check" type="radio" name="flightType" id="oneWay" value="ذهاب فقط">
+                                        <label class="btn-flight-custom" for="oneWay"><i class="fas fa-plane-departure mb-1"></i><span>ذهاب فقط</span></label>
+                                    </div>
+                                    <div class="flight-option">
+                                        <input class="btn-check" type="radio" name="flightType" id="roundTrip" value="ذهاب وعودة" checked>
+                                        <label class="btn-flight-custom" for="roundTrip"><i class="fas fa-exchange-alt mb-1"></i><span>ذهاب وعودة</span></label>
+                                    </div>
+                                    <div class="flight-option">
+                                        <input class="btn-check" type="radio" name="flightType" id="multiCity" value="وجهات متعددة">
+                                        <label class="btn-flight-custom" for="multiCity"><i class="fas fa-map-marked-alt mb-1"></i><span>وجهات متعددة</span></label>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div id="flight-routes-container" class="col-12">
+                                <div class="row g-3 flight-route-row align-items-end">
+                                    <div class="col-md-3 position-relative">
+                                        <div class="airport-input-wrapper">
+                                            <label class="form-label small text-muted">من (مطار)</label>
+                                            <input type="text" class="form-control airport-search" id="fFrom" placeholder="كود المطار (KWI)" autocomplete="off">
+                                            <ul class="autocomplete-list shadow-lg" id="results-fFrom"></ul>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3 position-relative">
+                                        <div class="airport-input-wrapper">
+                                            <label class="form-label small text-muted">إلى (مطار)</label>
+                                            <input type="text" class="form-control airport-search" id="fTo" placeholder="كود المطار (LHR)" autocomplete="off">
+                                            <ul class="autocomplete-list shadow-lg" id="results-fTo"></ul>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <label class="form-label small text-muted">الذهاب</label>
+                                        <input type="text" class="form-control date-picker bg-white" id="fDepart" placeholder="التاريخ" readonly>
+                                    </div>
+                                    <div class="col-md-3" id="returnDateContainer">
+                                        <label class="form-label small text-muted">العودة</label>
+                                        <input type="text" class="form-control date-picker bg-white" id="fReturnDate" placeholder="التاريخ" readonly>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <hr class="my-4 text-muted">
+
+                            <div class="col-12">
+                                <h6 class="fw-bold mb-3" style="padding-bottom: 25px;">تفاصيل المسافرين (الحد الأقصى 9)</h6>
+                                <div class="row g-3 p-3 bg-light rounded-3 border">
+                                    <div class="col-md-3">
+                                        <label class="small text-muted">البالغين (+12)</label>
+                                        <select class="form-select" id="fAdults" class="pax-select">
+                                            <option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option><option value="6">6</option><option value="7">7</option><option value="8">8</option><option value="9">9</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <label class="small text-muted">الأطفال (2-11)</label>
+                                        <select class="form-select" id="fKids" class="pax-select">
+                                            <option value="0">0</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <label class="small text-muted">الرضع (0-2)</label>
+                                        <select class="form-select" id="fInfants" class="pax-select">
+                                            <option value="0">0</option><option value="1">1</option><option value="2">2</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <label class="small text-muted">الدرجة</label>
+                                        <select class="form-select fw-bold text-primary" id="fClass">
+                                            <option value="Economy">Economy (سياحية)</option>
+                                            <option value="Business">Business (رجال أعمال)</option>
+                                            <option value="First">First Class (أولى)</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-12 mt-3">
+                                <div id="dynamic-dob-container" class="row g-3 p-3 bg-white border rounded shadow-sm animate__animated animate__fadeIn" style="display: none;">
+                                    </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="tab-pane fade" id="hotel-tab">
+                        <div class="row g-3">
+                            <div class="col-md-12 position-relative">
+                                <label class="form-label fw-bold">الوجهة (المدينة)</label>
+                                <div class="input-group">
+                                    <span class="input-group-text bg-white"><i class="fas fa-map-marker-alt text-danger"></i></span>
+                                    <input type="text" class="form-control form-control-lg city-search" id="hCity" placeholder="لندن، دبي..." autocomplete="off">
+                                </div>
+                                <ul class="autocomplete-list" id="results-hCity"></ul>
+                            </div>
+                            <div class="col-md-6">
+                                <label class="form-label small text-muted">دخول</label>
+                                <input type="text" class="form-control date-picker" id="hCheckIn" placeholder="التاريخ">
+                            </div>
+                            <div class="col-md-6">
+                                <label class="form-label small text-muted">خروج</label>
+                                <input type="text" class="form-control date-picker" id="hCheckOut" placeholder="التاريخ">
+                            </div>
+                            <div class="col-12 mt-4">
+                                <div class="p-3 border rounded bg-light">
+                                    <div class="row g-3">
+                                        <div class="col-md-4">
+                                            <label class="small fw-bold">الغرف</label>
+                                            <select class="form-select" id="hRooms"><option>1</option><option>2</option><option>3</option></select>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <label class="small fw-bold">النجوم</label>
+                                            <select class="form-select" id="hStars"><option>4 نجوم</option><option>5 نجوم</option></select>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <label class="small fw-bold">طلبات</label>
+                                            <input type="text" class="form-control" id="hRequests" placeholder="إطلالة...">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="tab-pane fade" id="train-tab">
+                        <div class="row g-3">
+                            <div class="col-md-6 position-relative">
+                                <label class="form-label small fw-bold">من</label>
+                                <input type="text" class="form-control city-search" id="trOrigin" placeholder="مدينة">
+                                <ul class="autocomplete-list" id="results-trOrigin"></ul>
+                            </div>
+                            <div class="col-md-6 position-relative">
+                                <label class="form-label small fw-bold">إلى</label>
+                                <input type="text" class="form-control city-search" id="trDest" placeholder="مدينة">
+                                <ul class="autocomplete-list" id="results-trDest"></ul>
+                            </div>
+                            <div class="col-md-6">
+                                <label class="form-label small text-muted">التاريخ</label>
+                                <input type="text" class="form-control date-picker" id="trDate">
+                            </div>
+                            <div class="col-md-6">
+                                <label class="form-label small text-muted">الوقت</label>
+                                <select class="form-select" id="trTime"><option>صباحاً</option><option>مساءً</option></select>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="tab-pane fade" id="car-tab">
+                        <div class="row g-3">
+                            <div class="col-md-12 position-relative">
+                                <label class="form-label small fw-bold">موقع الاستلام</label>
+                                <input type="text" class="form-control city-search" id="carPickLoc">
+                                <ul class="autocomplete-list" id="results-carPickLoc"></ul>
+                            </div>
+                            <div class="col-md-12 position-relative">
+                                <label class="form-label small fw-bold">موقع التسليم</label>
+                                <input type="text" class="form-control city-search" id="carDropLoc">
+                                <ul class="autocomplete-list" id="results-carDropLoc"></ul>
+                            </div>
+                            <div class="col-md-6"><label>استلام</label><input type="text" class="form-control date-picker" id="carPickDate"></div>
+                            <div class="col-md-6"><label>تسليم</label><input type="text" class="form-control date-picker" id="carDropDate"></div>
+                            <div class="col-12 mt-3">
+                                <div class="p-3 bg-light border rounded">
+                                    <div class="row g-3">
+                                        <div class="col-md-6">
+                                            <label class="small fw-bold">الفئة</label>
+                                            <select class="form-select" id="carCategory"><option>Economy</option><option>SUV</option><option>Luxury</option></select>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label class="small fw-bold">السائق</label>
+                                            <select class="form-select" id="carDriverAge"><option>25+ سنة</option><option>مع سائق</option></select>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="tab-pane fade" id="package-tab">
+                        <div class="row g-3">
+                            <div class="col-md-12 position-relative">
+                                <label class="form-label fw-bold">الوجهة</label>
+                                <input type="text" class="form-control city-search" id="pkgDest">
+                                <ul class="autocomplete-list" id="results-pkgDest"></ul>
+                            </div>
+                            <div class="col-md-6"><label>الموعد</label><input type="text" class="form-control date-picker" id="pkgDate"></div>
+                            <div class="col-md-6"><label>المدة</label><input type="number" class="form-control" id="pkgDuration"></div>
+                            <div class="col-12 mt-3">
+                                <label class="small fw-bold">الميزانية</label>
+                                <select class="form-select" id="pkgBudget"><option>اقتصادية</option><option>متوسطة</option><option>VIP</option></select>
+                            </div>
+                        </div>
+                    </div>
+
+                </div> <div= class="row g-4 mb-5 border-top pt-4" style="margin-top: 30px;">
+                    <div class="col-12">
+                        <h5 class="text-primary fw-bold mb-3"><i class="fas fa-user-circle me-2"></i> بيانات المسؤول عن الحجز</h5>
+                    </div>
+
+                    <div class="col-md-4">
+                        <label class="form-label text-muted small fw-bold">الاسم الأول</label>
+                        <input type="text" class="form-control form-control-lg" id="fName" required placeholder="First Name">
+                    </div>
+                    <div class="col-md-4">
+                        <label class="form-label text-muted small fw-bold">الاسم الأوسط</label>
+                        <input type="text" class="form-control form-control-lg" id="mName" required placeholder="Middle Name">
+                    </div>
+                    <div class="col-md-4">
+                        <label class="form-label text-muted small fw-bold">الاسم الأخير</label>
+                        <input type="text" class="form-control form-control-lg" id="lName" required placeholder="Last Name">
+                    </div>
+
+                    <div class="col-md-6">
+                        <label class="form-label small fw-bold">البريد الإلكتروني</label>        
+                        <input type="email" class="form-control form-control-lg" id="uEmail" required placeholder="user@example.com" style="height: 60px;">
+                    </div>
+                    <div class="col-md-6">
+                        <label class="form-label text-muted small fw-bold">رقم الواتساب</label>
+                        <div class="phone-input-wrapper" style="direction: ltr;">
+                            <input type="tel" class="form-control form-control-lg custom-phone-input" id="uPhone" required style="width: 100%;">
+                        </div>
+                    </div>
+
+                    <div class="col-md-4">
+                        <label class="form-label small fw-bold">رقم جواز السفر</label>
+                        <input type="text" class="form-control" id="uPassportNum" placeholder="Passport Number" required style="height: 60px;">
+                    </div>
+                    <div class="col-md-4">
+                        <label class="form-label small fw-bold">تاريخ انتهاء الجواز</label>
+                        <input type="text" class="form-control date-picker" id="uPassportExp" placeholder="Expire Date" required style="height: 60px;">
+                    </div>
+                    <div class="col-md-4">
+                        <label class="form-label small fw-bold">تاريخ الميلاد</label> 
+                        <input type="text" class="form-control date-picker" id="uDob" placeholder="Date of Birth" style="height: 60px;">
+                    </div>
+                    
+                    <div class="col-md-12">
+                        <label class="form-label small fw-bold">الجنسية</label>
+                        <input type="text" class="form-control" id="uNationality" placeholder="Kuwaiti, Egyptian..." style="height: 50px;">
+                    </div>
+                </div=
+
+                <div class="row mt-4 border-top pt-4">
+                    <div class="col-md-7 mb-3 mb-md-0">
+                        <div class="form-floating">
+                            <textarea class="form-control" id="uNotes" style="height: 80px" placeholder="ملاحظات"></textarea>
+                            <label>هل لديك طلبات خاصة؟</label>
+                        </div>
+                    </div>
+                    <div class="col-md-5 d-flex align-items-center">
+                        <button type="submit" class="btn btn-success w-100 py-3 fw-bold shadow-lg btn-send-request position-relative overflow-hidden" style="height: 75px;">
+                            <span class="position-relative z-2"><i class="fab fa-whatsapp fa-lg me-2"></i> تأكيد وإرسال الطلب</span>
+                        </button>
+                    </div>
+                    <div class="col-12 text-center mt-2">
+                        <small class="text-muted"><i class="fas fa-lock text-success me-1"></i> بياناتك مشفرة وآمنة تماماً</small>
+                    </div>
+                </div>
+
+            </form>
+        </div>
+    </div>
+</section>

@@ -1,0 +1,3688 @@
+:root {
+    --primary: #0F2854;
+    --secondary: #1C4D8D;
+    --accent: #4988C4;
+    --light: #BDE8F5;
+    --white: #ffffff;
+}
+
+body {
+    font-family: 'Cairo', sans-serif;
+    background-color: #fcfcfc;
+    overflow-x: hidden;
+    scroll-behavior: smooth;
+  
+}
+
+.noto-serif-unique {
+    font-family: "Noto Serif", serif;
+    font-optical-sizing: auto;
+    font-weight: 700;
+    font-style: normal;
+}
+.call-button {
+    background: #ffffff;
+}
+
+/* الأزرار العائمة */
+.floating-contact {
+    position: fixed;
+    bottom: 30px;
+    left: 20px;
+    right: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 9999;
+    pointer-events: none;
+}
+
+.btn-float {
+    width: 65px;
+    height: 65px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    font-size: 30px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+    transition: 0.3s;
+    pointer-events: auto;
+    text-decoration: none;
+}
+
+.btn-whatsapp { background: #25D366; animation: pulse 2s infinite; }
+.btn-phone { background: #1C4D8D; }
+
+.btn-float:hover { transform: scale(1.1) translateY(-5px); color: white; }
+
+@keyframes pulse {
+    0% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7); }
+    70% { box-shadow: 0 0 0 15px rgba(37, 211, 102, 0); }
+    100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); }
+}
+
+/* Tabs Design */
+.booking-tabs {
+    background: #f1f4f8;
+    padding: 8px;
+    border-radius: 50px;
+    display: inline-flex;
+}
+
+.booking-tabs input { display: none; }
+
+.booking-tabs label {
+    padding: 12px 30px;
+    cursor: pointer;
+    border-radius: 40px;
+    font-weight: bold;
+    color: var(--primary);
+    transition: 0.3s;
+}
+
+.booking-tabs input:checked + label {
+    background: var(--accent);
+    color: white;
+    box-shadow: 0 5px 15px rgba(73, 136, 196, 0.4);
+}
+
+/* Mega Whatsapp Button */
+.btn-whatsapp-mega {
+    background: linear-gradient(45deg, #128c7e, #25d366);
+    color: white;
+    border: none;
+    padding: 20px 60px;
+    border-radius: 50px;
+    font-size: 24px;
+    font-weight: 900;
+    transition: 0.4s;
+}
+
+.btn-whatsapp-mega:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 30px rgba(37, 211, 102, 0.4);
+    color: white;
+}
+
+/* Input Styles */
+.custom-input {
+    border: 2px solid #e9ecef !important;
+    height: calc(3.5rem + 10px) !important;
+}
+
+.custom-input:focus {
+    border-color: var(--accent) !important;
+    background-color: #f8fbff;
+}
+
+/* Top Bar */
+.top-bar {
+    background-color: var(--primary);
+    color: var(--light);
+    padding: 7px 0;
+    font-size: 16px;
+    width: 100%;
+
+}
+.top-bar a { color: var(--light); text-decoration: none; 
+    transition: 0.3s; 
+    width: 100%;    }
+
+/* Header */
+.main-header {
+    background-color: var(--white);
+    padding: 15px 0;
+    z-index: 1000;
+    font-size: 18px;
+}
+.logo-img {
+    height: 70px;
+    width: auto;
+    object-fit: contain;
+}
+.company-name {
+    font-family: "Noto Serif", serif;
+    font-weight: 900;
+    color: var(--primary);
+    letter-spacing: 2px;
+}
+
+/* Nav Menu */
+.nav-menu li a {
+    color: var(--secondary);
+    text-decoration: none;
+    font-weight: 700;
+    padding: 10px 15px;
+    transition: 0.3s;
+}
+.nav-menu li a:hover {
+    color: var(--accent);
+}
+
+/* Hero Section */
+.hero-section {
+    height: 80vh;
+    background: linear-gradient(rgba(15, 40, 84, 0.6), rgba(15, 40, 84, 0.568),#a5a5a548), 
+                url('./173c19188c26eeb15498e058decf0d03.jpg');
+    background-attachment: fixed;
+    background-size: cover;
+    background-position: center;
+}
+
+.btn-action {
+    background-color: var(--accent);
+    color: white;
+    padding: 15px 40px;
+    border-radius: 50px;
+    font-weight: bold;
+    font-size: 20px;
+    transition: 0.4s;
+}
+.btn-action:hover {
+    background-color: var(--secondary);
+    transform: scale(1.1);
+    color: white;
+}
+
+/* Booking Card */
+.booking-wrapper {
+    background: white;
+    border-radius: 30px;
+    overflow: hidden;
+    margin-top: -120px;
+    position: relative;
+    z-index: 10;
+}
+.booking-header {
+    background: linear-gradient(45deg, var(--primary), var(--secondary));
+}
+
+.custom-input {
+    border: 2px solid #eee;
+    padding: 12px;
+    border-radius: 12px;
+    transition: 0.3s;
+}
+.custom-input:focus {
+    border-color: var(--accent);
+    box-shadow: none;
+}
+
+/* إيقونة السهم المخصصة داخل خانات الإدخال */
+.custom-select-icon {
+    position: absolute;
+    left: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--accent);
+    pointer-events: none; /* عشان ما يمنع الضغط على الانبوت */
+    font-size: 0.8rem;
+    transition: 0.3s;
+}
+
+/* حركة بسيطة عند الكتابة */
+.custom-input:focus ~ .custom-select-icon {
+    transform: translateY(-50%) rotate(180deg);
+    color: var(--secondary);
+}
+
+/* تحسين شكل خانات الإدخال */
+.custom-input {
+    padding-left: 40px !important; /* مسافة للسهم */
+    border: 2px solid #e2e8f0 !important;
+    font-weight: 500;
+}
+
+/* إخفاء سهم المتصفح الافتراضي السخيف لتوحيد الشكل */
+input::-webkit-calendar-picker-indicator {
+    opacity: 0;
+}
+
+.btn-type {
+    border: 2px solid var(--accent);
+    color: var(--primary);
+    margin: 5px;
+    padding: 10px 25px;
+    font-weight: bold;
+}
+.btn-check:checked + .btn-type {
+    background-color: var(--accent);
+    border-color: var(--accent);
+    color: white;
+}
+
+.btn-whatsapp-send {
+    background-color: #25D366;
+    color: white;
+    padding: 18px 50px;
+    border-radius: 15px;
+    font-size: 22px;
+    font-weight: bold;
+    border: none;
+    box-shadow: 0 10px 20px rgba(37, 211, 102, 0.3);
+}
+
+/* Destinations Cards */
+.dest-card {
+    border-radius: 20px;
+    overflow: hidden;
+    background: white;
+    transition: 0.4s;
+}
+.dest-card:hover { transform: translateY(-10px); }
+.dest-img-placeholder {
+    height: 250px;
+    background-size: cover;
+    background-position: center;
+}
+
+.footer {
+    background-color: var(--primary);
+}
+
+/* Container للحقل والأيقونة */
+.booking-input-group {
+    position: relative;
+}
+
+/* تعديل الانبوت ليأخذ مساحة للأيقونة */
+.custom-input {
+    padding-left: 45px !important; /* مساحة للسهم في جهة اليسار */
+    border-radius: 12px !important;
+    border: 2px solid #e2e8f0 !important;
+}
+
+/* تصميم السهم (Indicator) */
+.dropdown-indicator {
+    position: absolute;
+    left: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--accent);
+    pointer-events: none; /* عشان ما يمنع الضغط */
+    font-size: 0.9rem;
+    z-index: 5;
+}
+
+/* إخفاء سهم المتصفح الافتراضي تماماً لتوحيد الشكل */
+input::-webkit-calendar-picker-indicator {
+    display: none !important;
+}
+
+/* تأثير عند التركيز */
+.custom-input:focus {
+    border-color: var(--accent) !important;
+    box-shadow: 0 0 10px rgba(73, 136, 196, 0.1) !important;
+}
+
+.custom-input:focus + label + .dropdown-indicator {
+    color: var(--secondary);
+    transform: translateY(-50%) rotate(180deg);
+}
+
+
+/* الحاوية الأساسية */
+.position-relative {
+    position: relative;
+    width: 100%;
+}
+
+/* تعديل الانبوت */
+.custom-input {
+    padding-left: 45px !important; /* مسافة للسهم */
+    padding-right: 15px !important; 
+    border-radius: 10px !important;
+    text-align: right; /* عشان يكتب عربي صح */
+}
+
+/* السهم - Indicator */
+.custom-select-icon {
+    position: absolute;
+    left: 15px; /* يوضع جهة اليسار لأن الموقع RTL */
+    top: 50%;
+    transform: translateY(-50%);
+    color: #4988c4; /* لون براند شركة فورموست */
+    pointer-events: none;
+    font-size: 0.85rem;
+    z-index: 10;
+}
+
+/* حركة السهم عند الضغط */
+.custom-input:focus ~ .custom-select-icon {
+    transform: translateY(-50%) rotate(180deg);
+    color: #f7941d; /* لون التغيير (برتقالي مثلاً) */
+}
+
+/* إخفاء السهم القديم بتاع جوجل كروم عشان ميبقاش فيه سهمين */
+input::-webkit-calendar-picker-indicator {
+    opacity: 0 !important;
+    width: 100%;
+    position: absolute;
+    left: 0;
+    cursor: pointer;
+}
+
+
+
+/* تأثير التوهج (Glow) عند اختيار الحقل */
+.custom-input:focus {
+    border-color: #1C4D8D !important;
+    box-shadow: 0 0 15px rgba(28, 77, 141, 0.2) !important;
+    background-color: #fff !important;
+}
+
+/* تحسين شكل النصوص داخل الليست في المتصفحات التي تدعم ذلك */
+datalist option {
+    font-weight: bold;
+    background-color: #f8f9fa;
+}
+
+/* تنسيق إضافي لزر الواتساب داخل الفورم ليصبح "رايق" */
+.btn-whatsapp-mega {
+    position: relative;
+    overflow: hidden;
+    background: linear-gradient(90deg, #25d366, #128c7e);
+    border: none;
+    z-index: 1;
+}
+
+.btn-whatsapp-mega::before {
+    content: '';
+    position: absolute;
+    top: 0; left: -100%;
+    width: 100%; height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+    transition: 0.5s;
+    z-index: -1;
+}
+
+.btn-whatsapp-mega:hover::before {
+    left: 100%;
+}
+
+
+.hero-creative {
+    position: relative;
+    height: 100vh;
+    min-height: 700px;
+    background: url('https://images.unsplash.com/photo-1544620347-c4fd4a3d5957?q=80&w=2070&auto=format&fit=crop') no-repeat center center/cover;
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+}
+
+.hero-overlay {
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background: linear-gradient(135deg, rgba(15, 40, 84, 0.9) 0%, rgba(28, 77, 141, 0.404) 80%);
+    z-index: 1;
+}
+
+.hero-creative .container {
+    position: relative;
+    z-index: 2;
+}
+
+/* جملة الـ Gradient */
+.text-gradient {
+    background: linear-gradient(to right, #BDE8F5, #4988C4);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+/* Glassmorphism Badge */
+.glass-badge {
+    display: inline-block;
+    padding: 8px 20px;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 50px;
+    color: #BDE8F5;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.hero-p {
+    font-size: 1.2rem;
+    color: rgba(255, 255, 255, 0.8);
+    max-width: 600px;
+    line-height: 1.8;
+}
+
+/* Buttons */
+.btn-main-creative {
+    background: #4988C4;
+    color: white;
+    padding: 15px 35px;
+    border-radius: 12px;
+    font-weight: bold;
+    transition: 0.4s;
+    border: none;
+    box-shadow: 0 10px 20px rgba(73, 136, 196, 0.3);
+}
+
+.btn-main-creative:hover {
+    background: #BDE8F5;
+    color: #0F2854;
+    transform: translateY(-5px);
+}
+
+.btn-outline-glass {
+    padding: 15px 35px;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 12px;
+    color: white;
+    backdrop-filter: blur(5px);
+    transition: 0.4s;
+}
+
+.btn-outline-glass:hover {
+    background: rgba(255, 255, 255, 0.1);
+    border-color: white;
+    color: white;
+}
+
+/* Stats Cards */
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+}
+
+.glass-card {
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(15px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 30px;
+    border-radius: 24px;
+    text-align: center;
+    transition: 0.3s;
+}
+
+.glass-card:hover {
+    transform: translateY(-10px);
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.glass-card h3 {
+    color: #BDE8F5;
+    font-weight: 900;
+    margin-bottom: 5px;
+}
+
+.glass-card p {
+    color: white;
+    margin: 0;
+    font-size: 14px;
+}
+
+/* Scroll Down Animation */
+.scroll-down {
+    position: absolute;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 2;
+}
+
+.mouse {
+    width: 30px;
+    height: 50px;
+    border: 2px solid white;
+    border-radius: 20px;
+    position: relative;
+}
+
+.mouse::before {
+    content: '';
+    width: 6px;
+    height: 6px;
+    background: white;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    top: 10px;
+    border-radius: 50%;
+    animation: scrollMove 2s infinite;
+}
+
+@keyframes scrollMove {
+    0% { top: 10px; opacity: 1; }
+    100% { top: 30px; opacity: 0; }
+}
+
+
+
+
+.bg-light-blue { background-color: #f4f9ff; }
+
+.section-header .divider {
+    width: 80px;
+    height: 4px;
+    background: var(--accent);
+    margin-top: 15px;
+    border-radius: 10px;
+}
+
+.dest-item {
+    border-radius: 20px;
+    overflow: hidden;
+    transition: 0.4s ease;
+    height: 100%;
+}
+
+.dest-img-container {
+    position: relative;
+    height: 300px;
+    overflow: hidden;
+}
+
+.dest-img-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: 0.6s ease;
+}
+
+/* السعر */
+.price-tag {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    background: var(--primary);
+    color: white;
+    padding: 5px 15px;
+    border-radius: 50px;
+    font-weight: bold;
+    font-size: 14px;
+    z-index: 5;
+}
+
+.badge-new {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    background: #f7941d;
+    color: white;
+    padding: 5px 15px;
+    border-radius: 50px;
+    font-size: 12px;
+    font-weight: bold;
+    z-index: 5;
+}
+
+/* الأوفرلاي الشفاف */
+.dest-overlay {
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background: rgba(15, 40, 84, 0.8);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: 0.4s;
+    padding: 20px;
+    text-align: center;
+}
+
+.dest-item:hover .dest-overlay { opacity: 1; }
+.dest-item:hover img { transform: scale(1.1); }
+
+.overlay-content {
+    transform: translateY(20px);
+    transition: 0.4s;
+}
+
+.dest-item:hover .overlay-content { transform: translateY(0); }
+
+.dest-info {
+    border-bottom: 4px solid transparent;
+    transition: 0.3s;
+}
+
+.dest-item:hover .dest-info {
+    border-bottom-color: var(--accent);
+}
+
+
+.creative-dest-section {
+    background: linear-gradient(180deg, #0F2854 0%, #1C4D8D 100%);
+    padding: 100px 0;
+}
+
+.text-accent-glow {
+    color: #BDE8F5;
+    text-shadow: 0 0 15px rgba(189, 232, 245, 0.5);
+}
+
+.luxury-divider {
+    width: 100px;
+    height: 3px;
+    background: linear-gradient(90deg, transparent, #4988C4, transparent);
+    margin-top: 20px;
+}
+
+/* الكارت الاحترافي */
+.premium-card {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    border-radius: 25px;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    position: relative;
+    overflow: hidden;
+}
+
+.premium-card:hover {
+    transform: translateY(-15px);
+    border-color: #4988C4;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+}
+
+.card-badge {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    background: #4988C4;
+    color: white;
+    padding: 5px 15px;
+    border-radius: 50px;
+    font-size: 12px;
+    z-index: 10;
+    font-weight: bold;
+}
+
+.premium-img-wrapper {
+    position: relative;
+    height: 220px;
+    overflow: hidden;
+}
+
+.premium-img-wrapper img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: 0.5s;
+}
+
+.premium-card:hover .premium-img-wrapper img {
+    transform: scale(1.1);
+}
+
+.card-content-area {
+    padding: 25px;
+    color: white;
+}
+
+.short-desc {
+    font-size: 0.9rem;
+    color: rgba(255, 255, 255, 0.7);
+    line-height: 1.6;
+    margin-bottom: 20px;
+    display: -webkit-box;
+    -webkit-line-clamp: 2; /* يظهر سطرين فقط عشان الفضول */
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.btn-read-more {
+    background: transparent;
+    border: 1px solid #4988C4;
+    color: #BDE8F5;
+    padding: 10px 20px;
+    border-radius: 50px;
+    font-weight: bold;
+    transition: 0.3s;
+    width: 100%;
+}
+
+.btn-read-more:hover {
+    background: #4988C4;
+    color: white;
+}
+
+/* تصميم النافذة الشفاف - Glassmorphism */
+.glass-modal {
+    background: rgba(15, 40, 84, 0.75) !important; /* شفافية عالية */
+    backdrop-filter: blur(15px); /* تمويه خلفية */
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 18px !important; /* المطلوب 18px */
+    overflow: hidden;
+}
+
+/* تصغير زر الواتساب وتنعيم الهوفير */
+.btn-whatsapp-mega {
+    background: #25d366;
+    color: white !important;
+    border-radius: 10px;
+    font-weight: bold;
+    font-size: 0.95rem; /* تصغير الخط */
+    padding: 10px 20px !important; /* تصغير الحجم */
+    transition: all 0.2s ease-in-out; /* تنعيم الحركة */
+    border: none;
+    text-decoration: none;
+    display: inline-block;
+}
+
+/* تقليل الهوفير */
+.btn-whatsapp-mega:hover {
+    transform: translateY(-2px); /* حركة بسيطة جداً */
+    filter: brightness(1.1);
+    box-shadow: 0 4px 10px rgba(37, 211, 102, 0.2);
+}
+
+/* تنسيق النصوص داخل المودال */
+.modal-body h2 {
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+}
+
+.modal-body p {
+    font-size: 0.9rem;
+    color: rgba(255, 255, 255, 0.85);
+}
+
+.alert-info {
+    border-radius: 12px;
+    background: rgba(73, 136, 196, 0.1) !important;
+    backdrop-filter: blur(5px);
+    margin-top: 20px;
+}
+
+.text-success {
+    color: #25d366 !important;
+    text-shadow: 0 0 15px rgba(37, 211, 102, 0.4);
+}
+
+.spinner-border {
+    width: 1.5rem;
+    height: 1.5rem;
+    border-width: 0.2em;
+    opacity: 0.7;
+}
+
+
+#why-foremost {
+    background-color: #ffffff;
+    font-family: 'Cairo', sans-serif;
+}
+
+/* خط جانبي جمالي يفصل بين الأقسام */
+.border-end-custom {
+    border-right: 4px solid #BDE8F5;
+    padding-right: 25px;
+    margin-right: 10px;
+    transition: 0.3s;
+}
+
+.border-end-custom:hover {
+    border-right-color: #1C4D8D;
+}
+
+/* تحسين شكل الفقرات النصية */
+.lh-lg {
+    line-height: 2 !important;
+    font-size: 1rem;
+    text-align: justify;
+}
+
+/* عناوين فرعية فخمة */
+.info-block h4 {
+    letter-spacing: -0.5px;
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.info-block h4 i {
+    font-size: 1.2rem;
+    color: #4988C4;
+}
+
+/* تحسين التجاوب للموبايل */
+@media (max-width: 991px) {
+    .border-end-custom {
+        border-right: none;
+        border-bottom: 2px solid #BDE8F5;
+        padding-right: 0;
+        padding-bottom: 30px;
+        margin-bottom: 30px;
+    }
+}
+
+
+.bg-dark-blue { background-color: #0F2854; }
+
+.social-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 25px 15px;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 15px;
+    color: white;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    backdrop-filter: blur(5px);
+}
+
+.social-card i {
+    font-size: 2.5rem;
+    margin-bottom: 12px;
+}
+
+.social-card span {
+    font-size: 0.9rem;
+    font-weight: bold;
+}
+
+/* الألوان عند الـ Hover */
+.social-card.instagram:hover { background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%, #d6249f 60%, #285AEB 90%); transform: translateY(-5px); }
+.social-card.snapchat:hover { background: #FFFC00; color: black; transform: translateY(-5px); }
+.social-card.tiktok:hover { background: #000000; border-color: #ee1d52; transform: translateY(-5px); }
+.social-card.facebook:hover { background: #1877F2; transform: translateY(-5px); }
+.social-card.youtube:hover { background: #FF0000; transform: translateY(-5px); }
+
+.social-links-top a {
+    font-size: 1.1rem;
+    transition: 0.3s;
+}
+
+.social-links-top a:hover {
+    color: #4988C4 !important;
+    transform: scale(1.2);
+}
+
+
+.footer-premium {
+    background: linear-gradient(180deg, #0F2854 0%, #07152d 100%);
+    border-top: 4px solid var(--accent);
+}
+
+.border-bottom-accent {
+    border-bottom: 2px solid var(--accent);
+    display: inline-block;
+}
+
+.footer-links li {
+    margin-bottom: 12px;
+}
+
+.footer-links li a {
+    color: rgba(255, 255, 255, 0.7);
+    text-decoration: none;
+    transition: var(--transition);
+    font-size: 0.95rem;
+}
+
+.footer-links li a:hover {
+    color: var(--light);
+    padding-right: 10px; /* حركة بسيطة عند الهوفير */
+}
+
+.social-icon-link {
+    width: 40px;
+    height: 40px;
+    background: rgba(255, 255, 255, 0.05);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10px;
+    color: white;
+    text-decoration: none;
+    transition: var(--transition);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.social-icon-link:hover {
+    background: var(--accent);
+    transform: translateY(-5px);
+    color: white;
+}
+
+.footer-contact-info i {
+    width: 20px;
+}
+
+.text-accent-glow {
+    color: var(--light);
+    text-shadow: 0 0 10px rgba(189, 232, 245, 0.4);
+}
+
+
+/* ضبط موضع السهم في الحقول المنسدلة */
+.booking-input-group .dropdown-indicator {
+    position: absolute;
+    left: 15px; /* لجهة اليسار في RTL */
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--accent);
+    z-index: 10;
+    pointer-events: none;
+    font-size: 0.8rem;
+}
+
+/* إخفاء سهم المتصفح الافتراضي القبيح */
+input::-webkit-calendar-picker-indicator {
+    display: none !important;
+}
+
+/* تحسين شكل الـ Custom Input */
+.custom-input {
+    border: 2px solid #eee !important;
+    border-radius: 12px !important;
+    transition: all 0.3s ease;
+    text-align: right;
+}
+
+.custom-input:focus {
+    border-color: var(--accent) !important;
+    background-color: #fff !important;
+    box-shadow: 0 0 15px rgba(73, 136, 196, 0.1) !important;
+}
+
+/* تنسيق الـ Textarea ليكون بنفس شكل باقي الحقول */
+textarea.custom-input {
+    padding-top: 25px !important;
+}
+
+
+/* ضبط تموضع صندوق الحجز ليكون بعد الهيرو مباشرة */
+.booking-wrapper {
+    background: var(--white);
+    border-radius: 25px;
+    margin-top: 40px; /* تم تغييرها من -100px إلى 40px لجعلها أسفل الهيرو */
+    margin-bottom: 60px; /* مسافة من الأسفل لسكشن الوجهات */
+    position: relative;
+    z-index: 10;
+    box-shadow: 0 15px 45px rgba(15, 40, 84, 0.15); /* تنعيم الظل ليكون أفخم */
+    border: 1px solid rgba(73, 136, 196, 0.1); /* بوردور خفيف جداً */
+    overflow: hidden;
+}
+
+/* تعديل بسيط لسكشن البطولة ليناسب التغيير */
+.hero-creative {
+    height: 85vh; /* تقليل الطول قليلاً ليظهر محرك الحجز للمستخدم فور النزول */
+    min-height: 600px;
+    /* باقي الخصائص كما هي */
+}
+
+/* تحسين شكل الهيدر داخل صندوق الحجز */
+.booking-header {
+    background: linear-gradient(135deg, var(--primary), var(--secondary));
+    padding: 40px 20px !important; /* زيادة الحشو ليعطي فخامة */
+}
+
+.hero-shape {
+    position: absolute;
+    bottom: -1px;
+    left: 0;
+    width: 100%;
+    line-height: 0;
+    z-index: 2;
+}
+.hero-shape svg {
+    display: block;
+    width: 100%;
+    height: 80px;
+}
+
+
+/* تحسين ظهور حقول التاريخ */
+.datepicker {
+    cursor: pointer !important;
+    background-color: #fff !important;
+}
+
+/* شكل التقويم نفسه نجعله متناسق مع ألوان فورموست */
+.flatpickr-calendar {
+    border-radius: 15px !important;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1) !important;
+    font-family: 'Cairo', sans-serif !important;
+}
+
+.flatpickr-day.selected {
+    background: var(--primary) !important;
+    border-color: var(--primary) !important;
+}
+
+
+
+/* تنسيق حقول التاريخ الذكية */
+.smart-date {
+    cursor: pointer !important;
+    background-color: #ffffff !important;
+    font-weight: bold;
+    color: var(--secondary) !important;
+}
+
+/* تنبيه الملخص المخصص */
+.alert-custom-blue {
+    background: rgba(73, 136, 196, 0.1);
+    border: 1px solid var(--accent);
+    border-radius: 12px;
+    color: var(--primary);
+    padding: 15px 20px;
+}
+
+/* تنسيق Flatpickr ليكون "بوكس" شيك وواضح */
+.flatpickr-calendar {
+    background: #fff;
+    border-radius: 18px !important;
+    box-shadow: 0 15px 50px rgba(15, 40, 84, 0.2) !important;
+    border: none !important;
+    padding: 10px;
+}
+
+.flatpickr-months .flatpickr-month {
+    color: var(--primary) !important;
+    font-weight: 800;
+}
+
+
+
+/* تنسيق اختيارات التاريخ داخل البوكس */
+.custom-input-dark {
+    background: rgba(255, 255, 255, 0.1) !important;
+    border: 1px solid rgba(255, 255, 255, 0.2) !important;
+    color: white !important;
+    border-radius: 10px !important;
+    height: 50px !important;
+    text-align: center;
+}
+
+.custom-input-dark option {
+    background: #0F2854;
+    color: white;
+}
+
+.glass-modal {
+    background: rgba(15, 40, 84, 0.9) !important;
+    backdrop-filter: blur(20px);
+    border-radius: 18px !important;
+}
+
+
+
+/* تحسين شكل حقل التاريخ ليكون متناسق مع براند فورموست */
+.custom-input[type="date"] {
+    position: relative;
+    padding-right: 40px; /* مساحة للأيقونة */
+    color: #0F2854;
+    font-weight: 500;
+}
+
+/* لمنع تداخل الكلام مع أيقونة التقويم في بعض المتصفحات */
+input[type="date"]::-webkit-calendar-picker-indicator {
+    background: transparent;
+    bottom: 0;
+    color: transparent;
+    cursor: pointer;
+    height: auto;
+    left: 0;
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: auto;
+}
+
+.form-floating > label {
+    right: 0; /* لضبط التسمية جهة اليمين في اللغة العربية */
+    left: auto;
+}
+
+
+/* تنسيق حقل التاريخ */
+.custom-input[type="date"] {
+    cursor: pointer;
+    font-family: 'Cairo', sans-serif;
+    color: var(--primary);
+    font-weight: bold;
+}
+
+/* إخفاء سهم المتصفح الافتراضي لتوحيد التصميم */
+input[type="date"]::-webkit-calendar-picker-indicator {
+    background: transparent;
+    bottom: 0;
+    color: transparent;
+    cursor: pointer;
+    height: auto;
+    left: 0;
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: auto;
+}
+
+/* ضبط الـ Label ليكون متناسق مع العربي */
+.form-floating > label {
+    right: 0;
+    left: auto;
+    padding-right: 25px;
+}
+
+
+/* تنسيق حقول الاختيار لتكون متناسقة */
+.custom-input {
+    border: 2px solid #f0f0f0 !important;
+    border-radius: 12px !important;
+}
+
+.custom-input:focus {
+    border-color: var(--primary) !important;
+    box-shadow: 0 0 10px rgba(15, 40, 84, 0.1) !important;
+}
+
+.booking-tabs label {
+    cursor: pointer;
+    padding: 10px 25px;
+    border-radius: 30px;
+    background: #f8f9fa;
+    margin: 0 5px;
+    transition: 0.3s;
+}
+
+.booking-tabs input[type="radio"]:checked + label {
+    background: var(--primary);
+    color: white;
+}
+
+
+
+.booking-tabs-container {
+    background: #f8f9fa;
+    border-radius: 25px 25px 0 0;
+}
+
+.nav-pills .nav-link {
+    color: var(--primary);
+    font-weight: bold;
+    border-radius: 50px;
+    margin: 0 5px;
+    padding: 10px 25px;
+    transition: 0.3s;
+}
+
+.nav-pills .nav-link.active {
+    background-color: var(--accent) !important;
+    box-shadow: 0 5px 15px rgba(73, 136, 196, 0.4);
+}
+
+.tab-pane {
+    animation: fadeIn 0.5s ease;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.form-floating > .form-control {
+    border-radius: 12px;
+    border: 1px solid #ddd;
+}
+
+
+
+
+/* تنسيق الـ Select2 ليكون متناسق مع تصميم فورموست */
+.select2-container--default .select2-selection--single {
+    height: 58px !important;
+    border: 1px solid #dee2e6 !important;
+    border-radius: 12px !important;
+    display: flex;
+    align-items: center;
+}
+.select2-container[dir="rtl"] .select2-selection--single .select2-selection__rendered {
+    padding-right: 15px !important;
+}
+.select2-results__option {
+    text-align: right;
+    font-family: 'Cairo', sans-serif;
+}
+
+
+
+.glass-modal {
+    background: rgba(15, 40, 84, 0.95) !important;
+    backdrop-filter: blur(20px);
+    border-radius: 30px !important;
+    overflow: hidden;
+}
+
+.btn-whatsapp-mega {
+    background: linear-gradient(45deg, #128c7e, #25d366);
+    color: white !important;
+    border-radius: 15px;
+    font-weight: bold;
+    text-transform: uppercase;
+    transition: 0.3s;
+}
+
+.btn-whatsapp-mega:hover {
+    transform: scale(1.02);
+    box-shadow: 0 10px 20px rgba(37, 211, 102, 0.3);
+}
+
+/* تعديل الـ Close button */
+.btn-close-white { filter: invert(1); opacity: 1; }
+
+
+/* ================================
+   STATS – NEO GLASS 2026
+================================ */
+
+.stats-neo {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 22px;
+    position: relative;
+}
+
+/* الكارت الأساسي */
+.stat-neo {
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    padding: 22px 24px;
+    border-radius: 22px;
+    background: linear-gradient(
+        135deg,
+        rgba(255,255,255,0.14),
+        rgba(255,255,255,0.04)
+    );
+    backdrop-filter: blur(22px);
+    -webkit-backdrop-filter: blur(22px);
+    border: 1px solid rgba(255,255,255,0.15);
+    box-shadow:
+        0 25px 50px rgba(0,0,0,0.35),
+        inset 0 0 0 rgba(255,255,255,0);
+    transition: all 0.6s cubic-bezier(.22,.61,.36,1);
+    cursor: default;
+    overflow: hidden;
+}
+
+/* حركة عند الهوفر */
+.stat-neo:hover {
+    transform: translateY(-12px) scale(1.035);
+    box-shadow:
+        0 40px 80px rgba(0,0,0,0.45),
+        0 0 35px rgba(78,113,255,0.45);
+}
+
+/* أيقونة */
+.stat-icon {
+    width: 62px;
+    height: 62px;
+    border-radius: 18px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 30px;
+    background: linear-gradient(135deg, #4E71FF, #8DD8FF);
+    color: #fff;
+    box-shadow:
+        0 12px 30px rgba(78,113,255,0.6);
+    flex-shrink: 0;
+    transition: transform 0.6s ease;
+}
+
+.stat-neo:hover .stat-icon {
+    transform: rotate(-6deg) scale(1.1);
+}
+
+/* النص */
+.stat-content h3 {
+    font-size: 30px;
+    font-weight: 800;
+    color: #ffffff;
+    margin: 0;
+    letter-spacing: 0.5px;
+}
+
+.stat-content p {
+    font-size: 14px;
+    margin: 4px 0 0;
+    color: rgba(255,255,255,0.75);
+}
+
+/* كارت مميز */
+.stat-neo.primary {
+    grid-column: span 2;
+    background: linear-gradient(
+        135deg,
+        rgba(84,9,218,0.55),
+        rgba(78,113,255,0.35)
+    );
+}
+
+/* كارت تأكيد */
+.stat-neo.highlight {
+    background: linear-gradient(
+        135deg,
+        rgba(141,216,255,0.45),
+        rgba(187,251,255,0.25)
+    );
+}
+
+/* كارت عريض */
+.stat-neo.wide {
+    grid-column: span 2;
+}
+
+/* تأثير وميض خفيف */
+.stat-neo::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+        120deg,
+        transparent,
+        rgba(255,255,255,0.25),
+        transparent
+    );
+    opacity: 0;
+    transition: opacity 0.6s ease;
+}
+
+.stat-neo:hover::after {
+    opacity: 1;
+}
+
+/* أنيميشن دخول */
+@keyframes floatUp {
+    from {
+        opacity: 0;
+        transform: translateY(40px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.stat-neo {
+    animation: floatUp 1s ease both;
+}
+
+.stat-neo:nth-child(2) { animation-delay: .1s; }
+.stat-neo:nth-child(3) { animation-delay: .2s; }
+.stat-neo:nth-child(4) { animation-delay: .3s; }
+.stat-neo:nth-child(5) { animation-delay: .4s; }
+.btn-main-creative {
+    background: var(--accent);
+    color: white;
+    padding: 15px 35px;
+    border-radius: 12px;
+    font-weight: bold;
+    transition: 0.4s;   
+    border: none;
+    box-shadow: 0 10px 20px rgba(73, 136, 196, 0.3);
+}
+
+
+
+/* --- Royal Split Billboard V2 (Clean & Pro) --- */
+
+.royal-deals-section {
+    padding: 80px 0;
+    background: #0b1c3d;
+    background-image: radial-gradient(circle at top center, #163a75 0%, #0b1c3d 80%);
+}
+
+.text-gradient-gold {
+    background: linear-gradient(45deg, #C5A059, #f8d79b, #C5A059);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+/* الكارت المقسم */
+.royal-split-card {
+    background: #152238;
+    border-radius: 20px;
+    overflow: hidden;
+    border: 1px solid rgba(197, 160, 89, 0.4); /* إطار ذهبي أوضح شوية */
+    box-shadow: 0 30px 60px rgba(0,0,0,0.5);
+    height: 480px;
+    margin-bottom: 30px;
+}
+
+/* قسم الصورة */
+.royal-img-container {
+    position: relative;
+    height: 100%;
+    overflow: hidden;
+}
+
+.royal-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 6s ease; /* حركة بطيئة وناعمة */
+}
+
+/* تفعيل الزووم لما السلايد يكون نشط */
+.swiper-slide-active .royal-img {
+    transform: scale(1.1);
+}
+
+.top-badge {
+    position: absolute;
+    top: 20px; right: 20px;
+    color: white;
+    padding: 6px 15px;
+    border-radius: 50px;
+    font-size: 0.8rem;
+    font-weight: bold;
+    z-index: 2;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+}
+
+/* قسم التفاصيل */
+.royal-details-box {
+    padding: 40px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 100%;
+    background: linear-gradient(135deg, #152238 0%, #0e1726 100%);
+}
+
+.header-row {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 15px;
+}
+
+.text-gold { color: #C5A059; }
+
+.card-title {
+    font-size: 1.8rem;
+    font-weight: 800;
+    margin-bottom: 15px;
+}
+
+.card-desc {
+    font-size: 0.95rem;
+    line-height: 1.7;
+    margin-bottom: 25px;
+    opacity: 0.9;
+}
+
+/* الشبكة (المميزات) */
+.specs-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+    margin-bottom: 30px;
+}
+
+.spec-item {
+    background: rgba(255, 255, 255, 0.08);
+    padding: 10px 15px;
+    border-radius: 10px;
+    color: #eee;
+    font-size: 0.9rem;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+}
+.spec-item i { color: #C5A059; } /* أيقونات ذهبية */
+
+/* الفوتر */
+.card-footer-custom {
+    margin-top: auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    padding-top: 20px;
+}
+
+.old-price { text-decoration: line-through; color: #777; font-size: 0.9rem; }
+.new-price { color: #fff; font-size: 1.8rem; font-weight: bold; }
+
+.btn-royal-action {
+    background: linear-gradient(45deg, #C5A059, #b08d45);
+    color: white;
+    border: none;
+    padding: 10px 30px;
+    border-radius: 50px;
+    font-weight: bold;
+    transition: 0.3s;
+    box-shadow: 0 5px 20px rgba(197, 160, 89, 0.3);
+}
+.btn-royal-action:hover { transform: translateY(-3px); background: #fff; color: #0F2854; }
+
+/* --- أزرار التحكم الجديدة (Creative Controls) --- */
+.royal-controls-bar {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 25px;
+    margin-top: 10px;
+}
+
+.control-btn {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.1);
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    transition: 0.3s;
+    backdrop-filter: blur(5px);
+}
+
+.control-btn:hover {
+    background: #C5A059;
+    color: #000;
+    transform: scale(1.1);
+}
+
+/* العداد الدائري */
+.autoplay-timer {
+    position: relative;
+    width: 60px;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    color: #C5A059;
+    font-size: 0.9rem;
+}
+
+.autoplay-timer svg {
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    transform: rotate(-90deg);
+}
+
+.autoplay-timer circle {
+    fill: none;
+    stroke: #C5A059;
+    stroke-width: 4;
+    stroke-dasharray: 125.6;
+    stroke-dashoffset: calc(125.6 * (1 - var(--progress, 0)));
+    transition: stroke-dashoffset 0.1s linear; /* حركة ناعمة */
+}
+
+/* استجابة للموبايل */
+@media (max-width: 991px) {
+    .royal-split-card { height: auto; }
+    .royal-img-container { height: 250px; }
+}
+
+/* ================================================== */
+/* 🔥 تصميم كروت العروض البروفيشنال (Pro Cards) 🔥 */
+/* ================================================== */
+
+/* 1. ضبط الشبكة والمسافات */
+#allInclusiveContainer {
+    padding: 10px;
+}
+
+/* 2. تصميم الكارت نفسه */
+.pro-offer-card {
+    border: none;
+    border-radius: 20px; /* حواف دائرية ناعمة */
+    background: #ffffff;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05); /* ظل هادي جداً */
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); /* حركة نطاطة خفيفة */
+    overflow: hidden;
+    position: relative;
+    height: 100%; /* عشان كلهم يبقوا نفس الطول */
+}
+
+/* تأثير لما تقف على الكارت */
+.pro-offer-card:hover {
+    transform: translateY(-10px); /* يطلع لفوق */
+    box-shadow: 0 20px 40px rgba(197, 160, 89, 0.25); /* ظل ذهبي فخم */
+}
+
+/* 3. منطقة الصورة */
+.pro-img-box {
+    height: 220px;
+    width: 100%;
+    position: relative;
+    overflow: hidden;
+    border-radius: 20px 20px 0 0;
+}
+
+.pro-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.8s ease;
+}
+
+.pro-offer-card:hover .pro-img {
+    transform: scale(1.15); /* زووم للصورة */
+}
+
+/* 4. بادج السعر (الشكل الجديد) */
+.price-badge {
+    position: absolute;
+    bottom: 15px;
+    left: 15px;
+    background: rgba(255, 255, 255, 0.95);
+    color: #0F2854; /* كحلي */
+    padding: 6px 15px;
+    border-radius: 30px;
+    font-weight: 800;
+    font-size: 1rem;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+    z-index: 2;
+}
+
+/* 5. أيقونات الطيران والفندق فوق الصورة */
+.overlay-icons {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    background: rgba(15, 40, 84, 0.8); /* كحلي شفاف */
+    color: #fff;
+    padding: 5px 12px;
+    border-radius: 20px;
+    font-size: 0.75rem;
+    backdrop-filter: blur(4px);
+}
+
+/* 6. محتوى الكارت (الكلام) */
+.card-body {
+    padding: 25px;
+    background: linear-gradient(to bottom, #ffffff 0%, #fcfcfc 100%);
+    display: flex;
+    flex-direction: column;
+}
+
+.card-title {
+    font-family: 'Noto Serif', serif;
+    font-size: 1.2rem;
+    color: #0F2854;
+}
+
+.card-text {
+    font-size: 0.9rem;
+    line-height: 1.6;
+    color: #666;
+    flex-grow: 1; /* بيخلي الأزرار كلها في مستوى واحد تحت */
+}
+
+/* 7. زر التفاصيل */
+.btn-pro-book {
+    background: transparent;
+    border: 2px solid #C5A059; /* إطار ذهبي */
+    color: #C5A059;
+    border-radius: 50px;
+    padding: 6px 20px;
+    font-weight: bold;
+    font-size: 0.9rem;
+    transition: 0.3s;
+}
+
+.btn-pro-book:hover {
+    background: #C5A059;
+    color: #fff;
+    box-shadow: 0 5px 15px rgba(197, 160, 89, 0.4);
+}
+
+/* النجوم */
+.rating-stars i {
+    margin-right: 1px;
+}
+
+
+
+/* --- Royal Slider Controls & Timer --- */
+
+/* 1. حاوية الأزرار والتايمر */
+.royal-controls-bar {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    margin-top: 20px;
+    position: relative;
+    z-index: 10;
+}
+
+/* 2. تصميم الأسهم (يمين وشمال) */
+.control-btn {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.1); /* شفاف */
+    border: 1px solid rgba(197, 160, 89, 0.5); /* إطار ذهبي */
+    color: #C5A059; /* سهم ذهبي */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    backdrop-filter: blur(5px);
+}
+
+.control-btn:hover {
+    background: #C5A059;
+    color: #fff;
+    transform: scale(1.1);
+}
+
+/* 3. تصميم التايمر الدائري (المهم جداً) */
+.autoplay-timer {
+    position: relative;
+    width: 60px;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    color: #fff;
+    font-size: 0.9rem;
+}
+
+.autoplay-timer svg {
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    transform: rotate(-90deg); /* عشان يبدأ من فوق */
+}
+
+.autoplay-timer circle {
+    fill: none;
+    stroke: #C5A059; /* لون الدائرة ذهبي */
+    stroke-width: 4;
+    stroke-dasharray: 125.6; /* محيط الدائرة */
+    stroke-dashoffset: calc(125.6 * (1 - var(--progress, 0))); /* المعادلة السحرية للحركة */
+    transition: stroke-dashoffset 0.1s linear; /* نعومة الحركة */
+}
+
+/* 4. تصميم النقط (Pagination) */
+.royal-dots {
+    margin-top: 15px;
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+}
+
+.royal-dots .swiper-pagination-bullet {
+    width: 12px; height: 12px;
+    background: rgba(255,255,255,0.3);
+    opacity: 1;
+    transition: 0.3s;
+}
+
+.royal-dots .swiper-pagination-bullet-active {
+    background: #C5A059;
+    width: 30px;
+    border-radius: 10px;
+}
+
+/* --- تنسيق حقل الهاتف الاحترافي --- */
+
+/* 1. ضبط الحاوية عشان المكتبة تاخد العرض كامل */
+.phone-input-wrapper {
+    position: relative;
+    width: 100%;
+}
+
+/* ضروري جداً عشان مكتبة الأعلام تشتغل بعرض كامل */
+.iti { 
+    width: 100%; 
+    display: block; 
+}
+
+/* 2. تنسيق الحقل نفسه (الإنبوت) */
+.custom-phone-input {
+    height: 60px; /* ارتفاع أكبر (شيك جداً) */
+    background: #f8f9fa; /* لون خلفية هادي */
+    border: 2px solid #e0e0e0; /* إطار ناعم */
+    border-radius: 12px; /* حواف دائرية عصرية */
+    font-size: 1.1rem; /* خط كبير وواضح */
+    font-weight: 600;
+    color: #0F2854; /* لون النص كحلي */
+    transition: all 0.3s ease;
+    
+    /* ⚠️ مهم جداً: اتجاه الرقم لازم يكون من اليسار لليمين عشان الكود الدولي يظهر صح */
+    direction: ltr; 
+    text-align: left;
+}
+
+/* لما العميل يدوس جوه الحقل */
+.custom-phone-input:focus {
+    background: #fff;
+    border-color: #C5A059; /* الإطار يقلب ذهبي */
+    box-shadow: 0 5px 15px rgba(197, 160, 89, 0.15); /* ظل ذهبي خفيف */
+    outline: none;
+}
+
+/* 3. تنسيق الليبل (الكلمة اللي فوق الحقل) */
+.phone-label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: bold;
+    color: #0F2854;
+    font-size: 0.9rem;
+    text-align: right; /* عشان احنا موقع عربي */
+}
+
+/* 4. تعديل مكان قائمة الأعلام (عشان تليق مع الارتفاع الجديد) */
+.iti__country-list {
+    border-radius: 10px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    border: none;
+    margin-top: 5px;
+    z-index: 100; /* عشان تظهر فوق أي حاجة */
+    text-align: left; /* أسماء الدول تظهر انجليزي مظبوط */
+}
+
+
+/* --- حل مشكلة قائمة الدول (Dropdown Fix) --- */
+
+/* 1. رفع حاوية رقم التليفون فوق أي عنصر تحتها */
+.phone-input-wrapper {
+    position: relative; /* لازم عشان الـ z-index يشتغل */
+    z-index: 100 !important; /* رقم عالي عشان يبقى فوق الملاحظات */
+}
+
+/* 2. التأكد إن قائمة الدول نفسها واخدة أعلى أولوية */
+.iti__country-list {
+    z-index: 9999 !important; /* عشان تظهر فوق أي حاجة تانية في الصفحة */
+    margin-top: 5px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.15); /* ظل عشان تفصلها عن الخلفية */
+    border-radius: 10px;
+}
+
+/* 3. تقليل أولوية خانة الملاحظات عشان متطلعش فوق القائمة */
+#uNotes {
+    position: relative;
+    z-index: 1; /* رقم قليل */
+}
+
+
+
+
+
+/* --- Professional Booking Form Styles --- */
+
+.booking-tabs-container {
+    border-radius: 0;
+}
+
+.booking-tabs-container .nav-link {
+    color: #555;
+    border-radius: 50px !important; /* شكل بيضاوي للأزرار */
+    margin: 0 5px;
+    transition: all 0.3s;
+}
+
+.booking-tabs-container .nav-link:hover {
+    background-color: #f0f0f0;
+    color: #0F2854;
+}
+
+.booking-tabs-container .nav-link.active {
+    background-color: #0F2854; /* كحلي */
+    color: #fff;
+    box-shadow: 0 4px 10px rgba(15, 40, 84, 0.3);
+}
+
+.booking-tabs-container .nav-link.text-gold.active {
+    background-color: #C5A059; /* ذهبي للباقة الشاملة */
+    color: #fff;
+}
+
+/* تنسيق الحقول */
+.form-control-lg, .form-select-lg {
+    font-size: 0.95rem;
+    padding: 0.8rem 1rem;
+    border-radius: 10px;
+}
+
+.form-control:focus, .form-select:focus {
+    border-color: #C5A059;
+    box-shadow: 0 0 0 0.25rem rgba(197, 160, 89, 0.15);
+}
+
+/* زر الإرسال */
+.btn-send-request {
+    background: linear-gradient(45deg, #25D366, #128C7E);
+    border: none;
+    transition: transform 0.2s;
+}
+.btn-send-request:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 20px rgba(37, 211, 102, 0.3) !important;
+}
+
+/* تحسين شكل الراديو */
+.form-check-input:checked {
+    background-color: #0F2854;
+    border-color: #0F2854;
+}
+
+
+
+
+
+
+/* ========================================= */
+/* 🔥 3. تصميم السكرول بار الشفاف (Ghost) 🔥 */
+/* ========================================= */
+
+::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+}
+
+::-webkit-scrollbar-track {
+    background: transparent; /* شفاف تماماً */
+}
+
+::-webkit-scrollbar-thumb {
+    background: #163a75; /* دهبي شفاف */
+    border-radius: 4px;
+}
+
+
+
+/* --- تصميم كارت التقييم الاحترافي --- */
+.review-card {
+    background: #ffffff;
+    border-radius: 20px;
+    padding: 30px;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.06); /* ظل ناعم وفخم */
+    border: 1px solid rgba(0,0,0,0.03);
+    height: 100%;
+    min-height: 280px;
+    position: relative;
+    transition: transform 0.3s ease, border-color 0.3s ease;
+}
+
+.review-card:hover {
+    transform: translateY(-5px);
+    border-color: #C5A059; /* إطار ذهبي عند اللمس */
+}
+
+/* بادج "حجز مؤكد" */
+.verified-badge {
+    background-color: #e8f5e9;
+    color: #2e7d32;
+    font-size: 0.75rem;
+    padding: 4px 10px;
+    border-radius: 50px;
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    font-weight: bold;
+}
+
+.rev-header {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+.rev-avatar {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 3px solid #f8f9fa;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+.rev-stars i {
+    color: #ffc107;
+    font-size: 0.9rem;
+    margin-right: 2px;
+}
+
+.rev-text {
+    font-size: 0.95rem;
+    line-height: 1.7;
+    color: #555;
+    font-style: italic;
+}
+
+.rev-date {
+    font-size: 0.8rem;
+    color: #999;
+    margin-top: 15px;
+    display: block;
+    text-align: left;
+}
+
+
+
+
+
+/* --- تصميم أزرار نوع الرحلة (Professional Flight Type) --- */
+
+.flight-type-wrapper {
+    background: #ffffff;
+    border-radius: 50px;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.05); /* ظل ناعم للحاوية */
+    border: 1px solid #eee;
+    padding: 8px !important;
+    display: inline-flex !important; /* عشان يلموا على بعض */
+    width: 100%;
+    margin: 0 auto; /* توسيط */
+}
+
+/* شكل الزرار وهو غير نشط */
+.btn-flight-custom {
+    display: flex;
+    flex-direction: column; /* الأيقونة فوق والكلام تحت */
+    align-items: center;
+    justify-content: center;
+    padding: 10px 25px;
+    border-radius: 30px;
+    cursor: pointer;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); /* حركة ناعمة */
+    color: #666;
+    background: transparent;
+    font-size: 1.1rem;
+    font-weight: 600;
+    border: 1px solid transparent;
+    min-width: 120px;
+}
+
+.btn-flight-custom i {
+    font-size: 1.2rem;
+    transition: transform 0.3s ease;
+    color: #ccc;
+}
+
+/* لما الماوس ييجي عليه (Hover) */
+.btn-flight-custom:hover {
+    background-color: #f8f9fa;
+    color: #0F2854;
+}
+
+.btn-flight-custom:hover i {
+    color: #C5A059; /* الأيقونة تبقى دهبي */
+    transform: translateY(-2px); /* الأيقونة تطلع لفوق سنة */
+}
+
+/* --- الحالة النشطة (Selected) 🔥 --- */
+.btn-check:checked + .btn-flight-custom {
+    background: #0F2854; /* لون الخلفية كحلي */
+    color: #fff; /* الكلام أبيض */
+    box-shadow: 0 8px 15px rgba(15, 40, 84, 0.3); /* ظل قوي */
+    transform: scale(1.05); /* تكبير بسيط */
+}
+
+.btn-check:checked + .btn-flight-custom i {
+    color: #C5A059; /* الأيقونة دهبي */
+}
+
+/* تظبيط للموبايل */
+@media (max-width: 768px) {
+    .flight-type-wrapper {
+        display: flex !important;
+        width: 100%;
+        border-radius: 20px;
+        flex-wrap: wrap;
+    }
+    .flight-option {
+        flex: 1; /* يملوا المساحة */
+    }
+    .btn-flight-custom {
+        padding: 10px;
+        min-width: auto;
+        width: 100%;
+        font-size: 0.8rem;
+    }
+}
+
+
+.iti__flag-container {
+    z-index: 5;
+}
+.iti {
+    width: 100%;
+}
+
+
+
+/* كروت المسافرين */
+.card-header {
+    background-color: transparent !important;
+    border-bottom: 1px dashed #eee !important;
+}
+.pax-title {
+    background-color: #f8f9fa;
+    border-color: #eee;
+}
+/* تنسيق التواريخ */
+.date-picker {
+    background-color: #fff !important;
+    cursor: pointer;
+}
+
+
+
+
+/* كارت الرحلة الإضافية */
+.route-card {
+    background: #f8f9fa;
+    border: 1px dashed #0F2854;
+    border-radius: 12px;
+    padding: 20px;
+    margin-top: 15px;
+    position: relative;
+    animation: slideDown 0.4s ease-out; /* الحركة */
+}
+
+/* زر الحذف (X) */
+.btn-remove-route {
+    position: absolute;
+    top: -10px;
+    left: -10px;
+    background: #dc3545;
+    color: white;
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 2px solid white;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    cursor: pointer;
+    transition: 0.2s;
+    z-index: 5;
+}
+.btn-remove-route:hover {
+    transform: scale(1.1);
+    background: #c82333;
+}
+
+/* أنيميشن النزول */
+@keyframes slideDown {
+    from { opacity: 0; transform: translateY(-20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+
+/* CSS الفاخر للهيرو */
+.hero-premium {
+    position: relative;
+    height: 100%;
+    width: 100%;
+    background: linear-gradient(135deg, #0a1a3a 0%, #0F2854 50%, #1a3a6e 100%);
+    overflow: hidden;
+    padding-top: 10px;
+}
+
+.hero-bg-animation {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+}
+
+.floating-clouds {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+}
+
+.cloud {
+    position: absolute;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 50px;
+    animation: float 20s infinite linear;
+}
+
+.cloud-1 {
+    width: 200px;
+    height: 60px;
+    top: 20%;
+    left: 10%;
+    animation-delay: 0s;
+}
+
+.cloud-2 {
+    width: 150px;
+    height: 45px;
+    top: 40%;
+    right: 15%;
+    animation-delay: -5s;
+}
+
+.cloud-3 {
+    width: 180px;
+    height: 54px;
+    bottom: 30%;
+    left: 20%;
+    animation-delay: -10s;
+}
+
+.airplane-flying {
+    position: absolute;
+    top: 30%;
+    right: -100px;
+    font-size: 1.3rem;
+    color: #C5A059;
+    animation: planeFlight 25s infinite linear;
+    z-index: 2;
+}
+
+.globe-rotation {
+    position: absolute;
+    bottom: 20%;
+    left: 5%;
+    font-size: 2rem;
+    color: rgba(255, 255, 255, 0.1);
+}
+
+.particles {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+}
+
+.particle {
+    position: absolute;
+    background: #C5A059;
+    border-radius: 50%;
+    animation: particleFloat 15s infinite linear;
+}
+
+.particle:nth-child(1) { width: 4px; height: 4px; top: 10%; left: 20%; animation-delay: 0s; }
+.particle:nth-child(2) { width: 6px; height: 6px; top: 40%; right: 30%; animation-delay: -3s; }
+.particle:nth-child(3) { width: 3px; height: 3px; bottom: 20%; left: 40%; animation-delay: -6s; }
+.particle:nth-child(4) { width: 5px; height: 5px; top: 60%; right: 10%; animation-delay: -9s; }
+.particle:nth-child(5) { width: 4px; height: 4px; bottom: 40%; left: 60%; animation-delay: -12s; }
+
+.gold-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(45deg, rgba(197, 160, 89, 0.1) 0%, transparent 50%, rgba(197, 160, 89, 0.05) 100%);
+    z-index: 1;
+}
+
+/* VIP Badge */
+.vip-badge {
+    position: relative;
+    display: inline-block;
+    margin-bottom: 2rem;
+}
+
+.badge-glow {
+    display: inline-flex;
+    align-items: center;
+    background: linear-gradient(90deg, #C5A059 0%, #E6C78C 100%);
+    color: #0F2854;
+    padding: 12px 24px;
+    border-radius: 50px;
+    font-weight: bold;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 0 30px rgba(197, 160, 89, 0.5);
+}
+
+.badge-glow::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+    animation: shine 3s infinite;
+}
+
+.sparkle {
+    animation: sparkle 2s infinite;
+    margin-left: 10px;
+}
+
+/* Hero Title */
+.hero-title-wrapper {
+    margin-bottom: 0.5rem;
+}
+
+.hero-main-title {
+    font-size: 3.5rem;
+    font-weight: 800;
+    color: white;
+    line-height: 1.2;
+    margin-bottom: 1rem;
+}
+
+.title-line {
+    display: block;
+}
+
+.text-gradient-gold {
+    background: linear-gradient(90deg, #C5A059 0%, #FFD700 50%, #C5A059 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    background-size: 200% auto;
+    animation: gradientShift 3s ease infinite;
+}
+
+.typewriter-text {
+    color: white;
+    border-right: 3px solid #C5A059;
+    padding-right: 5px;
+    animation: blink 1s infinite;
+}
+
+.title-underline {
+    display: flex;
+    align-items: center;
+    margin-top: 1rem;
+}
+
+.title-underline .line {
+    flex: 1;
+    height: 3px;
+    background: linear-gradient(90deg, transparent, #C5A059, transparent);
+}
+
+.title-underline .diamond {
+    width: 15px;
+    height: 15px;
+    background: #C5A059;
+    transform: rotate(45deg);
+    margin: 0 20px;
+    box-shadow: 0 0 20px rgba(197, 160, 89, 0.8);
+}
+
+/* Hero Description */
+.hero-description {
+    position: relative;
+    margin-bottom: 1rem;
+    padding: 0 2rem;
+}
+
+.quote-mark {
+    position: absolute;
+    font-size: 2rem;
+    color: #C5A059;
+    opacity: 0.3;
+    font-family: serif;
+}
+
+.quote-mark.start {
+    top: -20px;
+    left: 0;
+}
+
+.quote-mark.end {
+    bottom: -40px;
+    right: 0;
+}
+
+.description-text {
+    color: rgba(255, 255, 255, 0.9);
+    font-size: 1.3rem;
+    line-height: 1.8;
+    margin-bottom: 1.5rem;
+}
+
+.highlight {
+    color: #C5A059;
+    font-weight: bold;
+    position: relative;
+    display: inline-block;
+}
+
+.highlight::after {
+    content: '';
+    position: absolute;
+    bottom: 2px;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background: #C5A059;
+    transform: scaleX(0);
+    animation: highlightUnderline 3s infinite;
+}
+
+.quick-features {
+    display: flex;
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+.feature-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: rgba(255, 255, 255, 0.8);
+    font-size: 0.9rem;
+}
+
+/* Hero Actions */
+.hero-actions {
+    display: flex;
+    gap: 1.5rem;
+    margin-bottom: 1rem;
+    flex-wrap: wrap;
+}
+
+.btn-book-now {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    background: linear-gradient(135deg, #C5A059 0%, #E6C78C 100%);
+    color: #0F2854;
+    padding: 20px 40px;
+    border-radius: 15px;
+    font-weight: bold;
+    text-decoration: none;
+    overflow: hidden;
+    transition: transform 0.3s ease;
+    box-shadow: 0 10px 30px rgba(197, 160, 89, 0.4);
+}
+
+.btn-book-now:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 40px rgba(197, 160, 89, 0.6);
+}
+
+.btn-content {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+}
+
+.btn-icon {
+    font-size: 1rem;
+    margin-bottom: 5px;
+    display: block;
+}
+
+.btn-text {
+    display: block;
+    font-size: 1.2rem;
+}
+
+.btn-subtext {
+    display: block;
+    font-size: 0.8rem;
+    opacity: 0.8;
+}
+
+.btn-glow {
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(255,255,255,0.3) 0%, transparent 70%);
+    animation: glowRotate 5s linear infinite;
+}
+
+.btn-vip-consult {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background: rgba(255, 255, 255, 0.1);
+    color: white;
+    padding: 20px 30px;
+    border-radius: 15px;
+    font-weight: bold;
+    text-decoration: none;
+    border: 2px solid #C5A059;
+    transition: all 0.3s ease;
+    backdrop-filter: blur(10px);
+}
+
+.btn-vip-consult:hover {
+    background: rgba(197, 160, 89, 0.2);
+    transform: translateY(-3px);
+}
+
+.badge-hot {
+    background: #ff4757;
+    color: white;
+    padding: 3px 8px;
+    border-radius: 20px;
+    font-size: 0.7rem;
+    animation: pulse 1.5s infinite;
+}
+
+/* Airlines Logos */
+.airlines-logos {
+    margin-top: 3rem;
+    padding: 20px;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 15px;
+    backdrop-filter: blur(10px);
+}
+
+.logos-title {
+    color: rgba(255, 255, 255, 0.7);
+    margin-bottom: 15px;
+    font-size: 0.9rem;
+    display: flex;
+    align-items: center;
+}
+
+.logos-slider {
+    display: flex;
+    gap: 20px;
+    overflow-x: auto;
+    padding-bottom: 10px;
+}
+
+.logos-slider::-webkit-scrollbar {
+    height: 5px;
+}
+
+.logos-slider::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+}
+
+.logos-slider::-webkit-scrollbar-thumb {
+    background: #C5A059;
+    border-radius: 10px;
+}
+
+.logo-item {
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 20px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+    color: white;
+    font-weight: bold;
+}
+
+/* Hero Side Panel */
+.hero-side-panel {
+    background: rgba(15, 40, 84, 0.8);
+    border-radius: 25px;
+    padding: 30px;
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(197, 160, 89, 0.2);
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+}
+
+.special-offer {
+    background: linear-gradient(135deg, #ff6b6b 0%, #ff4757 100%);
+    border-radius: 20px;
+    padding: 25px;
+    margin-bottom: 30px;
+    position: relative;
+    overflow: hidden;
+}
+
+.offer-badge.hot {
+    position: absolute;
+    top: -10px;
+    right: 20px;
+    background: #ff3838;
+    color: white;
+    padding: 8px 15px;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    box-shadow: 0 5px 15px rgba(255, 56, 56, 0.4);
+}
+
+.offer-title {
+    color: white;
+    margin-bottom: 15px;
+    font-size: 1.5rem;
+}
+
+.offer-details {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 15px;
+}
+
+.price-old {
+    color: rgba(255, 255, 255, 0.7);
+    text-decoration: line-through;
+    font-size: 1.2rem;
+}
+
+.price-new {
+    color: white;
+    font-size: 2rem;
+    font-weight: bold;
+}
+
+.discount {
+    background: white;
+    color: #ff4757;
+    padding: 5px 10px;
+    border-radius: 10px;
+    font-weight: bold;
+    font-size: 0.9rem;
+}
+
+.offer-timer {
+    color: white;
+    font-size: 0.9rem;
+    display: flex;
+    align-items: center;
+}
+
+.timer {
+    background: rgba(0, 0, 0, 0.2);
+    padding: 5px 10px;
+    border-radius: 10px;
+    margin-left: 10px;
+    font-weight: bold;
+    font-family: monospace;
+}
+
+/* Smart Stats */
+.smart-stats {
+    margin-bottom: 30px;
+}
+
+.stats-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    color: white;
+}
+
+.stats-graph {
+    width: 100px;
+    height: 5px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 5px;
+    overflow: hidden;
+}
+
+.graph-bar {
+    height: 100%;
+    background: linear-gradient(90deg, #C5A059, #FFD700);
+    border-radius: 5px;
+    animation: graphFill 2s ease;
+}
+
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+}
+
+.stat-card {
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 15px;
+    padding: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    transition: transform 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.stat-card:hover {
+    transform: translateY(-5px);
+    border-color: #C5A059;
+}
+
+.stat-card.premium {
+    background: linear-gradient(135deg, rgba(197, 160, 89, 0.1) 0%, transparent 100%);
+}
+
+.stat-card.highlight {
+    background: linear-gradient(135deg, rgba(76, 175, 80, 0.1) 0%, transparent 100%);
+}
+
+.stat-card.wide {
+    grid-column: span 2;
+}
+
+.stat-icon-wrapper {
+    position: relative;
+    width: 50px;
+    height: 50px;
+    margin-bottom: 15px;
+}
+
+.stat-icon-bg {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: rgba(197, 160, 89, 0.2);
+    border-radius: 50%;
+    animation: pulseIcon 2s infinite;
+}
+
+.stat-icon {
+    position: relative;
+    font-size: 1.5rem;
+    color: #C5A059;
+}
+
+.stat-info {
+    color: white;
+}
+
+.stat-number {
+    font-size: 2rem;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.stat-label {
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 0.9rem;
+}
+
+.stat-trend {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    padding: 5px 10px;
+    border-radius: 10px;
+    font-size: 0.8rem;
+    font-weight: bold;
+}
+
+.stat-trend.up {
+    background: rgba(76, 175, 80, 0.2);
+    color: #4CAF50;
+}
+
+/* Customer Reviews */
+.customer-reviews {
+    margin-bottom: 30px;
+}
+
+.reviews-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    color: white;
+}
+
+.rating-stars {
+    color: #FFD700;
+    font-size: 0.9rem;
+}
+
+.rating-text {
+    color: rgba(255, 255, 255, 0.7);
+    margin-left: 10px;
+    font-size: 0.9rem;
+}
+
+.review-card {
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 15px;
+    padding: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.review-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.reviewer {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.reviewer-avatar {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid #C5A059;
+}
+
+.reviewer-info h6 {
+    color: white;
+    margin-bottom: 5px;
+}
+
+.reviewer-info small {
+    color: rgba(255, 255, 255, 0.5);
+    font-size: 0.8rem;
+}
+
+.review-date {
+    color: rgba(255, 255, 255, 0.5);
+    font-size: 0.8rem;
+}
+
+.review-text {
+    color: rgba(255, 255, 255, 0.8);
+    font-style: italic;
+    line-height: 1.6;
+}
+
+/* Booking Progress */
+.booking-progress {
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 15px;
+    padding: 20px;
+}
+
+.progress-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+    color: white;
+}
+
+.progress-count {
+    background: #C5A059;
+    color: #0F2854;
+    padding: 5px 10px;
+    border-radius: 10px;
+    font-weight: bold;
+    font-size: 0.9rem;
+}
+
+.progress-bar-container {
+    position: relative;
+    height: 10px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 5px;
+    overflow: hidden;
+}
+
+.progress-bar {
+    height: 100%;
+    background: linear-gradient(90deg, #C5A059, #FFD700);
+    border-radius: 5px;
+    position: relative;
+    animation: progressFill 2s ease;
+}
+
+.progress-glow {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+    animation: progressGlow 2s infinite;
+}
+
+.progress-text {
+    position: absolute;
+    top: -25px;
+    right: 0;
+    color: #C5A059;
+    font-size: 0.8rem;
+    font-weight: bold;
+}
+
+/* Quick Nav */
+.quick-nav {
+    position: absolute;
+    bottom: 40px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 10px;
+    background: rgba(15, 40, 84, 0.9);
+    padding: 15px 30px;
+    border-radius: 50px;
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(197, 160, 89, 0.2);
+    z-index: 3;
+}
+
+.nav-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 5px;
+    padding: 15px 20px;
+    color: rgba(255, 255, 255, 0.7);
+    text-decoration: none;
+    border-radius: 15px;
+    transition: all 0.3s ease;
+    min-width: 80px;
+}
+
+.nav-item:hover {
+    background: rgba(197, 160, 89, 0.1);
+    color: #C5A059;
+    transform: translateY(-5px);
+}
+
+.nav-item.highlight {
+    background: linear-gradient(135deg, #C5A059 0%, #E6C78C 100%);
+    color: #0F2854;
+    font-weight: bold;
+}
+
+.nav-item i {
+    font-size: 1.5rem;
+    margin-bottom: 5px;
+}
+
+.nav-item span {
+    font-size: 0.8rem;
+}
+
+/* Hero Wave */
+.hero-wave {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 150px;
+    z-index: 2;
+}
+
+.hero-wave svg {
+    width: 100%;
+    height: 100%;
+}
+
+/* Animations */
+@keyframes float {
+    0% { transform: translateX(0) translateY(0); }
+    50% { transform: translateX(50px) translateY(-20px); }
+    100% { transform: translateX(0) translateY(0); }
+}
+
+@keyframes planeFlight {
+    0% { transform: translateX(-100px) translateY(0) rotate(0); }
+    50% { transform: translateX(100px) translateY(-20px) rotate(5deg); }
+    100% { transform: translateX(300px) translateY(0) rotate(0); }
+}
+
+@keyframes particleFloat {
+    0% { transform: translateY(0) translateX(0); opacity: 0; }
+    10% { opacity: 1; }
+    90% { opacity: 1; }
+    100% { transform: translateY(-100vh) translateX(100px); opacity: 0; }
+}
+
+@keyframes shine {
+    0% { left: -100%; }
+    50% { left: 100%; }
+    100% { left: 100%; }
+}
+
+@keyframes sparkle {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.5; transform: scale(1.2); }
+}
+
+@keyframes gradientShift {
+    0%, 100% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+}
+
+@keyframes blink {
+    0%, 100% { border-color: transparent; }
+    50% { border-color: #C5A059; }
+}
+
+@keyframes highlightUnderline {
+    0%, 100% { transform: scaleX(0); }
+    50% { transform: scaleX(1); }
+}
+
+@keyframes glowRotate {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+@keyframes pulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.1); }
+}
+
+@keyframes graphFill {
+    0% { width: 0%; }
+}
+
+@keyframes pulseIcon {
+    0%, 100% { transform: scale(1); opacity: 0.2; }
+    50% { transform: scale(1.2); opacity: 0.4; }
+}
+
+@keyframes progressFill {
+    0% { width: 0%; }
+}
+
+@keyframes progressGlow {
+    0% { transform: translateX(-100%); }
+    100% { transform: translateX(100%); }
+}
+
+/* Responsive Design */
+@media (max-width: 992px) {
+    .hero-main-title {
+        font-size: 3rem;
+    }
+    
+    .stats-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .stat-card.wide {
+        grid-column: span 1;
+    }
+    
+    .quick-nav {
+        display: none;
+    }
+    
+    .hero-side-panel {
+        margin-top: 50px;
+    }
+}
+
+@media (max-width: 768px) {
+    .hero-main-title {
+        font-size: 2.5rem;
+    }
+    
+    .description-text {
+        font-size: 1.1rem;
+    }
+    
+    .quick-features {
+        flex-direction: column;
+        gap: 1rem;
+    }
+    
+    .hero-actions {
+        flex-direction: column;
+    }
+    
+    .btn-book-now,
+    .btn-vip-consult {
+        width: 100%;
+        justify-content: center;
+    }
+}
+
+
+
+/* =========================================
+   ✨ تحسينات قسم البينتو (Bento Grid Premium) ✨
+   ========================================= */
+
+/* --- 1. خلفية القسم الرئيسية (الحاوية الكبيرة) --- */
+.bento-section {
+    /* بدلاً من لون سادة، نستخدم تدرج لوني هادئ يعطي عمقاً */
+    background: linear-gradient(to bottom, #f8f9fa, #e9ecef);
+    /* زيادة الحشو الداخلي لراحة العين */
+    padding: 100px 0;
+    position: relative;
+    /* إضافة حدود علوية وسفلية دقيقة */
+    border-top: 1px solid rgba(0,0,0,0.05);
+    border-bottom: 1px solid rgba(0,0,0,0.05);
+    /* 🔥 الترويق كله هنا: ظل داخلي يعطي إحساس بالعمق كأن القسم محفور */
+    box-shadow: inset 0 0 50px rgba(15, 40, 84, 0.05);
+    overflow: hidden; /* لضمان عدم خروج العناصر الزخرفية */
+}
+
+/* إضافة عنصر زخرفي شفاف في الخلفية (اختياري - يعطي حركة) */
+.bento-section::before {
+    content: '';
+    position: absolute;
+    top: -10%; left: -10%;
+    width: 50%; height: 50%;
+    background: radial-gradient(circle, rgba(197, 160, 89, 0.1) 0%, transparent 70%); /* لون ذهبي خفيف جداً */
+    z-index: 0;
+    pointer-events: none;
+}
+
+/* --- 2. شبكة الصور (الحاوية الداخلية) --- */
+.bento-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    /* 👇 تم تعديل الارتفاع هنا بناءً على طلبك السابق (كان 1.2 وهذا غير صحيح، الأفضل رقم صحيح) 👇 */
+    grid-template-rows: repeat(1.4, 400px); /* صفين، كل صف 400 بيكسل */
+    gap: 25px; /* زيادة المسافة بين الصور قليلاً */
+    
+    position: relative;
+    z-index: 1; /* لضمان ظهورها فوق الزخرفة الخلفية */
+    
+    /* 🔥 الترويق الثاني: تأثير الزجاج (Glassmorphism) 🔥 */
+    /* خلفية بيضاء نصف شفافة */
+    background-color: rgba(255, 255, 255, 0.6);
+    /* تأثير ضبابي للخلفية */
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px); /* لدعم سفاري */
+    /* حشو داخلي للمجموعة */
+    padding: 30px;
+    /* تدوير الحواف للمجموعة ككل */
+    border-radius: 35px;
+    /* برواز ذهبي رفيع يحيط بالمجموعة */
+    border: 1px solid rgba(197, 160, 89, 0.3);
+    /* ظل ناعم للمجموعة */
+    box-shadow: 0 30px 60px rgba(15, 40, 84, 0.1);
+}
+
+/* --- 3. العناصر الفردية (البوكسات) --- */
+.bento-item {
+    position: relative;
+    border-radius: 25px; /* زيادة التدوير قليلاً */
+    overflow: hidden;
+    cursor: pointer;
+    /* ظل أعمق قليلاً بلون البراند */
+    box-shadow: 0 15px 35px rgba(15, 40, 84, 0.15);
+    transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1); /* حركة أنعم */
+    
+    /* 🔥 إضافة برواز رفيع جداً شبه شفاف حول كل صورة 🔥 */
+    border: 1px solid rgba(255, 255, 255, 0.8);
+    /* عشان البرواز مياخدش مساحة من الصورة */
+    box-sizing: border-box; 
+}
+
+.bento-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+/* --- تأثيرات التحويم (Hover) --- */
+.bento-item:hover {
+    /* رفع العنصر للأعلى أكثر */
+    transform: translateY(-8px) scale(1.01);
+    /* ظل قوي جداً عند التحويم */
+    box-shadow: 0 25px 50px rgba(15, 40, 84, 0.3);
+    /* 🔥 البرواز ينور باللون الذهبي عند التحويم 🔥 */
+    border-color: #C5A059;
+}
+
+.bento-item:hover img {
+    transform: scale(1.12); /* تكبير الصورة */
+}
+
+/* --- طبقة النصوص (Overlay) --- */
+.bento-overlay {
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    /* تدرج لوني أغمق قليلاً لضمان وضوح النص */
+    background: linear-gradient(to top, rgba(15, 40, 84, 0.9) 10%, rgba(15, 40, 84, 0.4) 50%, transparent);
+    opacity: 0;
+    transition: opacity 0.4s ease;
+    display: flex;
+    align-items: flex-end;
+    padding: 30px; /* زيادة الحشو للنص */
+    border-radius: 25px; /* لضمان تطابق الحواف */
+}
+
+.bento-item:hover .bento-overlay {
+    opacity: 1;
+}
+
+.bento-text {
+    color: white;
+    transform: translateY(30px);
+    transition: transform 0.4s ease 0.1s; /* تأخير بسيط للحركة */
+}
+
+.bento-item:hover .bento-text {
+    transform: translateY(0);
+}
+
+/* --- التحكم في أحجام الصور (Grid Areas) --- */
+.item-large { grid-column: span 2; grid-row: span 2; }
+.item-wide { grid-column: span 2; }
+.item-tall { grid-row: span 2; }
+
+/* --- الموبايل --- */
+@media (max-width: 991px) {
+    .bento-section { padding: 60px 0; }
+    .bento-grid {
+        grid-template-columns: 1fr;
+        grid-template-rows: auto;
+        gap: 20px;
+        padding: 20px; /* تقليل حشو المجموعة في الموبايل */
+        /* تخفيف تأثير الزجاج في الموبايل للأداء */
+        background-color: rgba(255, 255, 255, 0.8);
+        backdrop-filter: none;
+    }
+    .item-large, .item-wide, .item-tall {
+        grid-column: span 1;
+        grid-row: span 1;
+        min-height: 350px; /* ارتفاع مناسب للموبايل */
+    }
+}
+
+
+
+
+
+:root {
+    --primary: #0F2854;
+    --secondary: #1C4D8D;
+    --accent: #4988C4;
+    --light: #BDE8F5;
+    --white: #ffffff;
+    --gold: #D4AF37;
+    --dark-blue: #0A1E3A;
+    --light-blue: #1A3A6C;
+}
+
+.hero-premium {
+    position: relative;
+    height: 100vh;
+    min-height: 700px;
+    overflow: hidden;
+    color: var(--white);
+}
+
+/* تصميم خلفية الفيديو */
+.video-background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+}
+
+.video-background video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: brightness(0.8);
+}
+
+/* طبقة تدرج لوني فوق الفيديو */
+.video-overlay-gradient {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+        135deg,
+        rgba(10, 30, 58, 0.85) 0%,
+        rgba(15, 40, 84, 0.8) 30%,
+        rgba(28, 77, 141, 0.7) 70%,
+        rgba(73, 136, 196, 0.6) 100%
+    );
+    z-index: 2;
+}
+
+/* وضع المحتوى فوق الفيديو */
+.hero-premium .container {
+    position: relative;
+    z-index: 10;
+}
+
+/* تحسينات على المحتوى */
+.hero-title-wrapper {
+    margin-top: 1rem;
+    margin-bottom: 2rem;
+}
+
+.hero-main-title {
+    font-size: 3.5rem;
+    font-weight: 800;
+    line-height: 1.2;
+    margin-bottom: 1.5rem;
+    text-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+}
+
+.title-line {
+    display: block;
+    margin-bottom: 0.5rem;
+}
+
+.text-gradient-gold {
+    background: linear-gradient(90deg, var(--gold) 0%, #FFD700 50%, var(--gold) 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-weight: 900;
+}
+
+.typewriter-text {
+    color: var(--light);
+    font-weight: 700;
+    border-right: 3px solid var(--gold);
+    padding-right: 5px;
+    animation: blink 1s infinite;
+}
+
+@keyframes blink {
+    0%, 100% { border-color: transparent; }
+    50% { border-color: var(--gold); }
+}
+
+.title-underline {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 1rem 0 2rem;
+}
+
+.title-underline .line {
+    height: 2px;
+    width: 100px;
+    background: linear-gradient(90deg, transparent, var(--gold), transparent);
+}
+
+.title-underline .diamond {
+    width: 12px;
+    height: 12px;
+    background: var(--gold);
+    transform: rotate(45deg);
+    margin: 0 1rem;
+    box-shadow: 0 0 10px var(--gold);
+}
+
+/* تحسينات على الـVIP badge */
+.vip-badge {
+    margin-bottom: 2rem;
+    display: inline-block;
+}
+
+.badge-glow {
+    background: linear-gradient(135deg, var(--gold), #FFD700, var(--gold));
+    padding: 12px 24px;
+    border-radius: 50px;
+    display: inline-flex;
+    align-items: center;
+    color: var(--dark-blue);
+    font-weight: 700;
+    font-size: 1.1rem;
+    box-shadow: 0 4px 20px rgba(212, 175, 55, 0.5);
+    animation: glow 2s infinite alternate;
+}
+
+@keyframes glow {
+    from { box-shadow: 0 4px 20px rgba(212, 175, 55, 0.5); }
+    to { box-shadow: 0 4px 30px rgba(212, 175, 55, 0.8); }
+}
+
+/* تحسينات على الوصف */
+.hero-description {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    border-radius: 15px;
+    padding: 2rem;
+    margin-bottom: 2rem;
+    border: 1px solid rgba(212, 175, 55, 0.2);
+    position: relative;
+}
+
+.description-text {
+    font-size: 1.3rem;
+    line-height: 1.8;
+    margin: 1rem 0;
+    color: var(--light);
+}
+
+.highlight {
+    color: var(--gold);
+    font-weight: 700;
+    position: relative;
+}
+
+.highlight::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background: var(--gold);
+    opacity: 0.5;
+}
+
+.quote-mark {
+    position: absolute;
+    font-size: 4rem;
+    color: var(--gold);
+    opacity: 0.3;
+}
+
+.quote-mark.start {
+    top: 10px;
+    right: 20px;
+}
+
+.quote-mark.end {
+    bottom: 10px;
+    left: 20px;
+}
+
+/* تحسينات على الأزرار */
+.hero-actions {
+    display: flex;
+    gap: 1.5rem;
+    margin-bottom: 3rem;
+    flex-wrap: wrap;
+}
+
+.btn-book-now {
+    background: linear-gradient(135deg, var(--gold), #FFD700);
+    color: var(--dark-blue);
+    padding: 18px 32px;
+    border-radius: 12px;
+    font-weight: 700;
+    font-size: 1.2rem;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.3s ease;
+    box-shadow: 0 6px 20px rgba(212, 175, 55, 0.4);
+    border: none;
+}
+
+.btn-book-now:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(212, 175, 55, 0.6);
+    color: var(--dark-blue);
+}
+
+.btn-vip-consult {
+    background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(10px);
+    color: var(--white);
+    padding: 18px 32px;
+    border-radius: 12px;
+    font-weight: 700;
+    font-size: 1.2rem;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    border: 2px solid var(--gold);
+    transition: all 0.3s ease;
+}
+
+.btn-vip-consult:hover {
+    background: rgba(212, 175, 55, 0.2);
+    color: var(--white);
+    transform: translateY(-5px);
+}
+
+/* تحسينات على الإحصائيات */
+.hero-side-panel {
+    background: rgba(15, 40, 84, 0.7);
+    backdrop-filter: blur(15px);
+    border-radius: 20px;
+    padding: 2rem;
+    border: 1px solid rgba(73, 136, 196, 0.3);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    height: 100%;
+    overflow-y: auto;
+}
+
+.smart-stats {
+    margin-bottom: 2rem;
+}
+
+.stat-card {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+    padding: 1.2rem;
+    margin-bottom: 1rem;
+    transition: transform 0.3s ease;
+    border: 1px solid rgba(73, 136, 196, 0.2);
+}
+
+.stat-card:hover {
+    transform: translateY(-5px);
+    border-color: var(--gold);
+}
+
+.stat-card.premium {
+    background: linear-gradient(135deg, rgba(212, 175, 55, 0.2), rgba(255, 215, 0, 0.1));
+}
+
+.stat-card.highlight {
+    background: linear-gradient(135deg, rgba(73, 136, 196, 0.3), rgba(28, 77, 141, 0.2));
+}
+
+.stat-number {
+    font-size: 2.2rem;
+    font-weight: 800;
+    color: var(--gold);
+    margin: 0;
+}
+
+.stat-label {
+    color: var(--light);
+    margin: 0;
+    font-size: 0.9rem;
+}
+
+/* تحسينات على التقييمات */
+.customer-reviews {
+    background: rgba(255, 255, 255, 0.08);
+    border-radius: 15px;
+    padding: 1.5rem;
+    margin-bottom: 2rem;
+    border: 1px solid rgba(212, 175, 55, 0.2);
+}
+
+.review-card {
+    background: rgba(10, 30, 58, 0.7);
+    border-radius: 12px;
+    padding: 1.5rem;
+    margin-top: 1rem;
+    border-left: 4px solid var(--gold);
+}
+
+.reviewer-avatar {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    border: 2px solid var(--gold);
+}
+
+.review-text {
+    color: var(--light);
+    font-style: italic;
+    margin-top: 1rem;
+}
+
+/* شعارات شركات الطيران */
+.airlines-logos {
+    margin-top: 2rem;
+    padding-top: 2rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.logos-title {
+    color: var(--light);
+    font-size: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* تأثيرات الحركة */
+.floating {
+    animation: floating 3s ease-in-out infinite;
+}
+
+@keyframes floating {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+}
+
+/* التجاوب مع الشاشات الصغيرة */
+@media (max-width: 992px) {
+    .hero-main-title {
+        font-size: 2.5rem;
+    }
+    
+    .hero-actions {
+        flex-direction: column;
+    }
+    
+    .btn-book-now, .btn-vip-consult {
+        width: 100%;
+        justify-content: center;
+    }
+    
+    .video-overlay-gradient {
+        background: linear-gradient(
+            135deg,
+            rgba(10, 30, 58, 0.9) 0%,
+            rgba(15, 40, 84, 0.85) 50%,
+            rgba(28, 77, 141, 0.8) 100%
+        );
+    }
+}
+
+@media (max-width: 768px) {
+    .hero-premium {
+        height: auto;
+        min-height: 100vh;
+        padding: 4rem 0;
+    }
+    
+    .hero-main-title {
+        font-size: 2rem;
+    }
+    
+    .description-text {
+        font-size: 1.1rem;
+    }
+}
