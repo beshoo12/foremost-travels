@@ -740,3 +740,33 @@ ${l}
             }
         }
     });
+    /* =========================================
+   إجبار حقول الاسم على قبول الإنجليزية فقط
+   ========================================= */
+document.addEventListener('DOMContentLoaded', function() {
+    const nameInputs = ['fName', 'mName', 'lName'];
+    
+    nameInputs.forEach(id => {
+        const input = document.getElementById(id);
+        if (input) {
+            input.addEventListener('input', function() {
+                // لو فيه أي حرف غير إنجليزي أو مسافة، امسحه فوراً
+                if (/[^a-zA-Z\s]/.test(this.value)) {
+                    this.value = this.value.replace(/[^a-zA-Z\s]/g, '');
+                    
+                    // إظهار تنبيه صغير (اختياري)
+                    Swal.fire({
+                        toast: true,
+                        position: 'top-end',
+                        icon: 'warning',
+                        title: 'يرجى الكتابة باللغة الإنجليزية فقط (مطابق للجواز)',
+                        showConfirmButton: false,
+                        timer: 2000
+                    });
+                }
+                // تحويل الحروف لكابيتال تلقائياً
+                this.value = this.value.toUpperCase();
+            });
+        }
+    });
+});
