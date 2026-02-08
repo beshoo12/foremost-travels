@@ -78,3 +78,32 @@ img, video {
 footer {
     padding-bottom: 80px; 
 }
+
+/* إصلاح زرار استشارة VIP والبادج */
+.btn-vip-consult {
+    display: inline-flex !important; /* يخليهم مرصوصين جنب بعض بمرونة */
+    align-items: center !important;  /* يظبطهم في النص عمودياً (مسطرة) */
+    justify-content: center !important;
+    flex-wrap: nowrap !important;    /* يمنع نزول أي حاجة للسطر اللي تحته */
+    gap: 8px !important;             /* مسافة شيك بين الأيقونة والكلام والبادج */
+    white-space: nowrap !important;  /* يمنع تكسير الكلام */
+    width: auto !important;          /* يخلي العرض على قد المحتوى */
+    max-width: 100%;                 /* يضمن مفيش خروج بره الشاشة */
+}
+
+/* تعديل خاص للموبايل عشان الكلام ميكنش صغير أوي أو كبير أوي */
+@media (max-width: 450px) {
+    .btn-vip-consult {
+        font-size: 0.85rem !important; /* تصغير الخط سنة بسيطة عشان يكفي */
+        padding: 10px 15px !important;
+    }
+    
+    .btn-vip-consult .badge-hot {
+        font-size: 0.7rem !important; /* تصغير البادج الأحمر شوية */
+        padding: 3px 8px !important;
+    }
+    
+    .btn-vip-consult i {
+        font-size: 1.1rem !important; /* تصغير أيقونة الواتساب */
+    }
+}
