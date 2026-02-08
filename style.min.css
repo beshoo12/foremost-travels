@@ -14,3 +14,67 @@ img, video {
         display: block;
     }
 }
+
+/* =============================================
+   1. إصلاحات الشاشات الرفيعة (Samsung S8+ & others)
+   ============================================= */
+@media (max-width: 450px) {
+    /* تكبير اللوجو وضبط الحاوية */
+    .logo-area {
+        width: 160px !important; /* توسيع مكان اللوجو */
+        height: auto !important;
+        top: 5px !important;
+    }
+    
+    .brand-logo {
+        width: 100% !important; /* يملأ المساحة الجديدة */
+        max-width: 160px !important;
+        height: auto !important;
+    }
+
+    /* إصلاح أزرار نوع الرحلة (ذهاب وعودة) */
+    .flight-type-wrapper {
+        flex-wrap: wrap !important; /* يسمح بالنزول سطر جديد لو المكان داق */
+        padding: 5px !important;
+        gap: 5px !important;
+    }
+
+    .flight-option {
+        flex: 1 1 45% !important; /* يخلي الزرار ياخد نص الشاشة */
+    }
+
+    .btn-flight-custom {
+        padding: 8px 5px !important;
+        font-size: 0.8rem !important;
+        min-width: auto !important;
+    }
+
+    /* إصلاح خروج الإضافات عن الشاشة */
+    .form-check {
+        display: flex;
+        align-items: center;
+        white-space: normal !important; /* يخلي الكلام ينزل سطر تاني */
+    }
+    
+    .form-check-label {
+        font-size: 0.85rem !important;
+    }
+}
+
+/* =============================================
+   2. ميكانيزم إخفاء الشريط السفلي (Fixed Bottom)
+   ============================================= */
+.fixed-bottom {
+    transition: transform 0.4s ease-in-out;
+    transform: translateY(0); /* الوضع الطبيعي (ظاهر) */
+}
+
+/* الكلاس ده لما ينضاف، الشريط هيختفي تحت */
+.fixed-bottom.hide-bar {
+    transform: translateY(100%) !important; 
+}
+
+/* رفع الفوتر عشان الكلام ميتغطاش لما الشريط يكون ظاهر */
+footer {
+    padding-bottom: 80px; 
+}
