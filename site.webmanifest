@@ -3,12 +3,12 @@
     "short_name": "Foremost",
     "icons": [
         {
-            "src": "./images/Foremost Corprate Logo (1).png",
+            "src": "./images/android-chrome-192x192.png",
             "sizes": "192x192",
             "type": "image/png"
         },
         {
-            "src": "./images/Foremost Corprate Logo (1).png",
+            "src": "./images/android-chrome-512x512.png",
             "sizes": "512x512",
             "type": "image/png"
         }
