@@ -934,5 +934,55 @@ ${getUmrahDetails()}
 
 *يرجى الرد بأفضل الأسعار والتفاصيل المطلوبة للعمرة.*
 *نتمنى لكم عمرة مباركة ومقبولة إن شاء الله!* 🕋🤲`}
+
+ const vipForm = document.getElementById("vipForm");
+    const inputField = document.getElementById("vipContactInput");
+
+    if (!vipForm || !inputField) return;
+
+    vipForm.addEventListener("submit", function (event) {
+        event.preventDefault();
+
+        const inputVal = inputField.value.trim();
+
+        // Email Regex أقوى
+        const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[A-Za-z]{2,}$/;
+
+        // Phone Regex (من 10 لـ 15 رقم - يبدأ اختياري بـ +)
+        const phoneRegex = /^\+?[0-9]{10,15}$/;
+
+        // تحقق
+        if (emailRegex.test(inputVal)) {
+            successMessage();
+        } 
+        else if (phoneRegex.test(inputVal)) {
+            successMessage();
+        } 
+        else {
+            errorMessage();
+        }
+
+    });
+
+    function successMessage() {
+        Swal.fire({
+            title: "تم الانضمام للنخبة!",
+            text: "سيتم إرسال أحدث العروض الحصرية إليك قريباً.",
+            icon: "success",
+            confirmButtonColor: "#0F2854"
+        });
+        vipForm.reset();
+    }
+
+    function errorMessage() {
+        Swal.fire({
+            title: "صيغة غير صحيحة!",
+            text: "يرجى إدخال بريد إلكتروني صحيح أو رقم هاتف (10-15 رقم).",
+            icon: "error",
+            confirmButtonColor: "#d33"
+        });
+    }
+    
 document.addEventListener('DOMContentLoaded',function(){const umrahTabBtn=document.querySelector('button[data-bs-target="#umrah-tab"]');if(umrahTabBtn){umrahTabBtn.addEventListener('click',function(){setTimeout(()=>{const adults=document.getElementById('uAdults');const kids=document.getElementById('uKids');const infants=document.getElementById('uInfants');if(adults&&kids&&infants){const updatePassengers=()=>{const total=parseInt(adults.value)+parseInt(kids.value)+parseInt(infants.value);const dobContainer=document.getElementById('umrah-dynamic-dob-container');if(total>0&&dobContainer){dobContainer.style.display='block';generateUmrahDOBFields(parseInt(adults.value),parseInt(kids.value),parseInt(infants.value))}else if(dobContainer){dobContainer.style.display='none'}};adults.addEventListener('change',updatePassengers);kids.addEventListener('change',updatePassengers);infants.addEventListener('change',updatePassengers);updatePassengers()}},300)})}
+
 document.addEventListener("DOMContentLoaded",function(){const observer=new MutationObserver(function(mutations){mutations.forEach(function(mutation){if(mutation.attributeName==="class"){const isModalOpen=document.body.classList.contains('modal-open');const floatingBtns=document.querySelector('.floating-fab-container');if(floatingBtns){if(!isModalOpen){floatingBtns.style.setProperty('display','flex','important');floatingBtns.style.setProperty('opacity','1','important');floatingBtns.style.setProperty('visibility','visible','important');floatingBtns.classList.remove('d-none')}else{floatingBtns.style.setProperty('display','none','important')}}}})});observer.observe(document.body,{attributes:!0})})});console.log('✅ تم تحميل إصلاحات العمرة المميزة بنجاح')})
