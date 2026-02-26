@@ -2,7 +2,7 @@ User-agent: *
 Allow: /
 
 # السماح للزواحف بالوصول لملفات التنسيق والجافاسكريبت (مهم جداً عشان جوجل يشوف التصميم صح)
-Allow: /style.css
+Allow: /style.min.css
 Allow: /script.js
 Allow: /images/
 
