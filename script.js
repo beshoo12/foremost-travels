@@ -1395,7 +1395,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 <div class="col-lg-3 col-md-6 col-sm-12 animate__animated animate__fadeInUp" style="animation-delay: ${delay}s;">
                     <div class="flight-card-pro">
                         <div class="airline-tag"><i class="fas fa-plane text-primary me-1"></i> ${flight.tag}</div>
-                        <img src="${flight.image}" alt="${flight.destination}" class="flight-card-img" loading="lazy">
+                       <img src="${flight.image}" alt="${flight.destination}" class="poster-main-img" loading="lazy" decoding="async" fetchpriority="low">
                         
                         <div class="flight-card-content text-right">
                             <h3 class="flight-dest-name">${flight.destination}</h3>
@@ -4461,7 +4461,7 @@ setTimeout(() => {
                         <div class="trendy-poster-area">
                             <div class="trendy-tag">${flight.tag}</div>
                             <div class="poster-blur-bg" style="background-image: url('${flight.image}');"></div>
-                            <img src="${flight.image}" alt="${flight.destination}" class="poster-main-img" loading="lazy">
+                           <img src="${flight.image}" alt="${flight.destination}" class="poster-main-img" loading="lazy" decoding="async" fetchpriority="low">
                         </div>
                         
                         <div class="trendy-info-area text-right">
