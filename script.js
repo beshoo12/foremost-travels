@@ -4433,109 +4433,59 @@ ${getUmrahDetails()}
     console.log('✅ تم تحميل إصلاحات العمرة المميزة بنجاح')
 })
 
-
 // =========================================
-// ✈️ نظام رحلات الطيران المباشر (الكود المتوافق)
+// ✈️ نظام رحلات الطيران (Trendy 2026 Design)
 // =========================================
-const directFlights = [
-    {
-        destination: "القاهرة",
-        country: "مصر",
-        frequency: "رحلات يومية (Daily)",
-        image: "./images/cairo.jpeg", 
-        tag: "طيران الجزيرة"
-    },
-    {
-        destination: "دبي",
-        country: "الإمارات",
-        frequency: "رحلات يومية (Daily)",
-        image: "./images/dubai.jpeg",
-        tag: "طيران مباشر"
-    },
-    {
-        destination: "إسطنبول",
-        country: "تركيا",
-        frequency: "4 أيام بالأسبوع",
-        image: "./images/istanbul.jpeg",
-        tag: "مباشر لـ IST / SAW"
-    },
-    {
-        destination: "عمان",
-        country: "الأردن",
-        frequency: "الإثنين، الثلاثاء، السبت",
-        image: "./images/amman.jpeg",
-        tag: "طيران الجزيرة"
-    },
-    {
-        destination: "بيروت",
-        country: "لبنان",
-        frequency: "الجمعة والأحد",
-        image: "./images/beirut.jpeg",
-        tag: "طيران مباشر"
-    },
-    {
-        destination: "مومباي",
-        country: "الهند",
-        frequency: "رحلات يومية (Daily)",
-        image: "./images/mumbai.jpeg",
-        tag: "طيران مباشر"
-    },
-    {
-        destination: "دلهي",
-        country: "الهند",
-        frequency: "4 أيام بالأسبوع",
-        image: "./images/delhi.jpeg",
-        tag: "طيران مباشر"
-    },
-    {
-        destination: "كوتشي",
-        country: "الهند",
-        frequency: "3 أيام بالأسبوع",
-        image: "./images/kochi.jpeg",
-        tag: "طيران مباشر"
-    }
-];
-
-// دالة رسم الكروت
 setTimeout(() => {
-    const flightsContainer = document.getElementById("directFlightsContainer");
+    const trendyFlights = [
+        { destination: "القاهرة", country: "مصر", image: "./images/cairo.jpeg?v=1", tag: "يومياً ✈️" },
+        { destination: "دبي", country: "الإمارات", image: "./images/dubai.jpeg?v=1", tag: "أكثر مبيعاً 🔥" },
+        { destination: "إسطنبول", country: "تركيا", image: "./images/istanbul.jpeg?v=1", tag: "مباشر لـ IST" },
+        { destination: "عمان", country: "الأردن", image: "./images/amman.jpeg?v=1", tag: "طيران الجزيرة" },
+        { destination: "بيروت", country: "لبنان", image: "./images/beirut.jpeg?v=1", tag: "رحلات ويكند" },
+        { destination: "مومباي", country: "الهند", image: "./images/mumbai.jpeg?v=1", tag: "طيران مباشر" },
+        { destination: "دلهي", country: "الهند", image: "./images/delhi.jpeg?v=1", tag: "طيران مباشر" },
+        { destination: "كوتشي", country: "الهند", image: "./images/kochi.jpeg?v=1", tag: "طيران مباشر" }
+    ];
+
+    const container = document.getElementById("trendyFlightsContainer");
     
-    if (flightsContainer) {
-        directFlights.forEach((flight, index) => {
+    if (container) {
+        trendyFlights.forEach((flight, index) => {
             const delay = index * 0.1;
+            
             const html = `
-                <div class="col-lg-3 col-md-6 col-sm-12 animate__animated animate__fadeInUp" style="animation-delay: ${delay}s;">
-                    <div class="flight-card-pro">
-                        <div class="airline-tag"><i class="fas fa-plane text-primary me-1"></i> ${flight.tag}</div>
-                        <img src="${flight.image}" alt="${flight.destination}" class="flight-card-img" loading="lazy">
+                <div class="col-lg-4 col-md-6 col-sm-12 animate__animated animate__fadeInUp" style="animation-delay: ${delay}s;">
+                    <div class="trendy-flight-card">
                         
-                        <div class="flight-card-content text-right">
-                            <h3 class="flight-dest-name">${flight.destination}</h3>
-                            <div class="flight-frequency">
-                                <i class="far fa-calendar-alt"></i> ${flight.frequency}
+                        <div class="trendy-poster-area">
+                            <div class="trendy-tag">${flight.tag}</div>
+                            <div class="poster-blur-bg" style="background-image: url('${flight.image}');"></div>
+                            <img src="${flight.image}" alt="${flight.destination}" class="poster-main-img" loading="lazy">
+                        </div>
+                        
+                        <div class="trendy-info-area text-right">
+                            <h3 class="trendy-dest">${flight.destination}</h3>
+                            <div class="trendy-country">
+                                <i class="fas fa-map-marker-alt text-danger"></i> ${flight.country}
                             </div>
                             
-                            <div class="flight-details-hidden">
-                                <div class="flight-badge">
-                                    <i class="fas fa-map-marker-alt text-warning me-1"></i> من: مطار الكويت (KWI)
-                                </div>
-                                <button class="btn-flight-whatsapp" onclick="bookDirectFlight('${flight.destination}')">
-                                    <i class="fab fa-whatsapp"></i> استفسر واحجز
-                                </button>
-                            </div>
+                            <button class="btn-trendy-whatsapp" onclick="bookTrendyFlight('${flight.destination}', '${flight.country}')">
+                                <i class="fab fa-whatsapp fa-lg"></i> حجز واستفسار
+                            </button>
                         </div>
+                        
                     </div>
                 </div>
             `;
-            flightsContainer.insertAdjacentHTML('beforeend', html);
+            container.insertAdjacentHTML('beforeend', html);
         });
     }
 }, 500);
 
-// دالة الواتساب
-window.bookDirectFlight = function(destination) {
+// دالة حجز الواتساب
+window.bookTrendyFlight = function(destination, country) {
     const whatsappNum = typeof COMPANY_NUMBER !== 'undefined' ? COMPANY_NUMBER : "96565865808";
-    const message = `✈️ *استفسار عن طيران مباشر* ✈️\n\nمرحباً فورموست،\nأرغب في الاستفسار عن تفاصيل وأسعار رحلات الطيران المباشر من مطار الكويت إلى: *${destination}*\n\nيرجى تزويدي بأوقات الرحلات المتاحة وأفضل الأسعار. شكراً 🌹`;
-    
+    const message = `✨ *طلب حجز طيران مباشر* ✨\n\nمرحباً فورموست،\nشاهدت عروض الطيران المباشر وأرغب في السفر إلى: *${destination} (${country})*\n\nيرجى تزويدي بالمواعيد وأفضل الأسعار المتاحة. شكراً 🌹`;
     window.open(`https://wa.me/${whatsappNum}?text=${encodeURIComponent(message)}`, '_blank');
 };
