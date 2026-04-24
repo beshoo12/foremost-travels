@@ -41,9 +41,11 @@
     top: -20px; left: -20px; right: -20px; bottom: -20px;
     background-size: cover;
     background-position: center;
-    filter: blur(25px) brightness(0.4);
+    filter: blur(15px) brightness(0.4); /* قللنا البلور درجة خفيفة عشان السرعة */
     z-index: 1;
-    transform: scale(1.1);
+    transform: scale(1.1) translateZ(0); /* السر هنا: تشغيل كارت الشاشة */
+    will-change: filter, transform; /* تنبيه المتصفح عشان يجهز نفسه */
+    backface-visibility: hidden;
     transition: all 0.5s ease;
 }
 
